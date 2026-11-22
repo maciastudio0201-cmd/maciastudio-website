@@ -621,7 +621,7 @@ const ratingBox = (c) => {
   return `<div class="rbox">${rows}</div>`;
 };
 const sch = k => `img/schedule-${k}-en.jpg?v=4`;
-const calPic = () => schedPic(T('img/calendar-2027.jpg?v=12','img/calendar-2027-en.jpg?v=12'), T('2027 年日历（停课日·比赛活动）','2027 Calendar (closures & competitions)'));
+const calPic = () => schedPic(T('img/calendar-2027.jpg?v=13','img/calendar-2027-en.jpg?v=13'), T('2027 年日历（停课日·比赛活动）','2027 Calendar (closures & competitions)'));
 const schedPic = (src, title) => `<section class="ttable"><h2>${title}</h2><button class="pic sched-pic" type="button" data-src="${src}" aria-label="${T('放大查看','View larger')}"><img src="${src}" alt="${title}"></button><p class="sched-tip">${T('点击图片可放大查看','Tap the image to enlarge')}</p></section>`;
 function courseView(c){
   const back = `<a class="back" href="#courses">← ${T('返回课程介绍','Back to Courses')}</a><div><div class="eyebrow">Courses</div><h1 class="c-title">${appIcon(c.id,40)}${L(c,'n')}</h1></div>`;
