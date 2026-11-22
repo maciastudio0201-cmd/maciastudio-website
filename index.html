@@ -545,7 +545,6 @@ h1.c-title::after{display:none}
     <a href="#highlights" data-v="highlights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></svg><span data-zh="精彩回顾" data-en="Highlights">精彩回顾</span></a>
     <a href="#acts" data-v="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M18 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span data-zh="丰富活动与训练" data-en="Activities &amp; Training">丰富活动与训练</span></a>
     <hr class="navsep">
-    <a href="#calendar" data-v="calendar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 10h16M8 14h2M12 14h2M16 14h0M8 17h2M12 17h2"/></svg><span data-zh="2027 年日历" data-en="2027 Calendar">2027 年日历</span></a>
     <a href="#venues" data-v="venues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span data-zh="场地" data-en="Venues">场地</span></a>
     <a href="#contact" data-v="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v11H8l-4 4z"/></svg><span data-zh="联系我们" data-en="Contact">联系我们</span></a>
   </nav>
@@ -880,9 +879,6 @@ const V = {
       <div class="vside"><div class="vimg">${v.img?`<img src="${v.img}" alt="${T(v.n,v.nEn)}">`:''}</div><h2>${T(v.n,v.nEn)}</h2><div class="addr">${mapLink(v)}</div></div>
       <div class="vmain"><h3>${T('开设课程','Classes offered')}</h3>${allClasses(v)}<a class="tt-link" href="#venue-${v.id}">${T('点击查看课表','View class schedule')}&nbsp;→</a></div>
     </div>`).join('')}</div>`,
-  calendar: () => `
-    <div><div class="eyebrow">2027</div><h1>${T('2027 年日历','2027 Calendar')}</h1></div>
-    ${calPic()}`,
   price: () => `
     <div><div class="eyebrow">Course Fees</div><h1>${T('课程费用','Course Fees')}</h1></div>
     <div class="feebox">
