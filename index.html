@@ -172,7 +172,7 @@ h1::after{content:"";display:block;width:48px;height:1px;background:var(--gold);
 .sched-tip{margin:8px 0 0;color:var(--muted);font-size:12px}
 #lb img{max-width:100%;max-height:100%;border-radius:3px}
 /* courses */
-.ph.rot img{opacity:0;transition:opacity .6s}
+.ph.rot img{opacity:0;transition:opacity .4s}
 .ph.rot img.on{opacity:1}
 /* 照片整体调色：降低对比、提亮暗部、减少偏黄，更柔和高级 */
 img:not([src*="schedule"]):not([src*="qr-"]):not([src*="logo"]):not([src*="shop-"]){filter:contrast(.9) brightness(1.05) saturate(.85)}
@@ -739,7 +739,7 @@ const DATE = {'sg-tiara-2026':'2026-11-15','sg-carnival-2026':'2026-11-08','perf
 const leaves = (n) => n.img ? [n] : (n.kids||[]).flatMap(leaves);
 const leafList = (n) => leaves(n).map((x,i)=>({x,i})).sort((a,b)=>(DATE[b.x.id]||'').localeCompare(DATE[a.x.id]||'')||a.i-b.i).map(o=>o.x);
 const coverOf = (n) => { const ls = leafList(n); if (ls.length > 1) return `<div class="ph rot">${ls.map((x,i)=>`<img src="${x.img[0]}" alt="${L(x.parent&&x.y?x.parent:x,'n')}"${i?' loading="lazy"':''} class="${i?'':'on'}"${x.pos?` style="object-position:${x.pos}"`:''}>`).join('')}</div>`; return coverOf1(n); };
-setInterval(() => document.querySelectorAll('.ph.rot').forEach(b => { const im = b.querySelectorAll('img'), k = [...im].findIndex(e=>e.classList.contains('on')); im[k].classList.remove('on'); const nx = im[(k+1)%im.length]; nx.loading='eager'; nx.classList.add('on'); }), 2000);
+setInterval(() => document.querySelectorAll('.ph.rot').forEach(b => { const im = b.querySelectorAll('img'), k = [...im].findIndex(e=>e.classList.contains('on')); im[k].classList.remove('on'); const nx = im[(k+1)%im.length]; nx.loading='eager'; nx.classList.add('on'); }), 1200);
 const coverFirst = (n, firsts) => { const ls = leafList(n); const imgs = [...firsts.map(u=>({u,a:T('精彩回顾','Highlights'),p:'center 20%'})), ...ls.map(x=>({u:x.img[0],a:L(x.parent&&x.y?x.parent:x,'n'),p:x.pos})).filter(o=>!firsts.includes(o.u))]; return `<div class="ph rot">${imgs.map((o,i)=>`<img src="${o.u}" alt="${o.a}"${i?' loading="lazy"':''} class="${i?'':'on'}"${o.p?` style="object-position:${o.p}"`:''}>`).join('')}</div>`; };
 const coverOf1 = (n) => { const u = firstImg(n), p = posOf(n); return u ? `<div class="ph"><img src="${u}" alt="${L(n,'n')}" loading="lazy"${p?` style="object-position:${p}"`:''}></div>` : ''; };
 const tile = (n) => `<a class="card" href="#${n.id}">${coverOf(n)}<div class="body"><h3>${L(n,'n')}</h3>${n.sub&&n.kids?`<span class="date">${L(n,'sub')}</span>`:''}<span class="more">${n.kids?T('点击进入','Open'):T('查看照片','View photos')}&nbsp;→</span></div></a>`;
