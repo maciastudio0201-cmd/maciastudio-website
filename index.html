@@ -723,6 +723,12 @@ const SLOTS = [
 const BANNERS = [
   {img:'img/banner-xmas2026.jpg'},   // 2026 圣诞睡衣派对
   {img:'img/banner-1.jpg'},   // 11 月免费试课促销
+  {img:'img/classic2026-40.jpg',    // 2026 经典赛
+   eb:'Singapore Rhythmic Gymnastics Classic 2026', title:'<span>2026 新加坡</span><span>艺术体操经典赛</span>', titleEn:'<span>2026 Singapore</span><span>Rhythmic Gymnastics</span><span>Classic</span>',
+   text:'Macia 学员站上领奖台！感谢每一位孩子的努力，和家长一路的支持。', textEn:'Macia gymnasts on the podium! Thank you to every child for their hard work, and to every parent for their support.'},
+  {img:'img/classic2026-38.jpg',    // 2026 经典赛
+   eb:'Singapore Rhythmic Gymnastics Classic 2026', title:'<span>2026 新加坡</span><span>艺术体操经典赛</span>', titleEn:'<span>2026 Singapore</span><span>Rhythmic Gymnastics</span><span>Classic</span>',
+   text:'每一枚奖牌，都是日常训练的坚持。在 Macia，孩子在运动中建立自信。', textEn:'Every medal comes from steady daily training. At Macia, children build confidence through sport.'},
   {img:'img/banner-2.jpg',    // 2026 狂欢赛唯一男选手
    eb:'Singapore Rhythmic Gymnastics Carnival 2026', title:'<span>2026 新加坡</span><span>艺术体操狂欢赛</span><span>唯一男选手</span>', titleEn:'<span>2026 Singapore</span><span>Rhythmic Gymnastics</span><span>Carnival</span><span>The Only Boy</span>',
    text:'<b class="b-award">LEVEL 3 徒手 金牌</b>展现男子艺术体操的力量与美感。欢迎热爱艺术体操的男孩加入 Macia！',
@@ -827,7 +833,7 @@ const V = {
 
     <section class="block">
       <div class="tiles two big">
-        <a class="tile" href="#highlights">${coverFirst(NODES.highlights,['img/classic2026-35.jpg','img/classic2026-36.jpg','img/classic2026-37.jpg'])}<h3>${T('精彩回顾','Highlights')} <em>&nbsp;→</em></h3><p>${T('新加坡比赛 · 国外赛','Singapore · Overseas competitions')}</p></a>
+        <a class="tile" href="#highlights">${coverOf(NODES.highlights)}<h3>${T('精彩回顾','Highlights')} <em>&nbsp;→</em></h3><p>${T('新加坡比赛 · 国外赛','Singapore · Overseas competitions')}</p></a>
         <a class="tile" href="#acts">${coverOf(NODES.acts)}<h3>${T('丰富活动与训练','Activities & Training')} <em>&nbsp;→</em></h3><p>${T('大型演出 · 国外集训 · 日常训练 · 派对','Performances · Overseas camps · Daily training · Parties')}</p></a>
       </div>
     </section>
