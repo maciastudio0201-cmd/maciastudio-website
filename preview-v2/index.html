@@ -744,7 +744,7 @@ body{background:#120C10}
 .card2,.ven2,.cf,.co2,.fcard,.qr,.vcard,.tform,.trial-intro,.shop-cat,.shop-item,.citem,.card,.tile,.tt2 .tslot{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 14px 34px rgba(0,0,0,.35)!important}
 .tt2 .tdh{background:#2A1E25}
 .tform input,.tform select,.tform textarea,.slot-sel{background:#120C10!important;color:var(--ink)!important;border-color:#3A2B34!important}
-.phead{position:relative;background:linear-gradient(0deg,#120C10 0%,rgba(18,12,16,.55) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center 30%/cover,#0E0A0D!important;padding-top:110px!important;padding-bottom:56px!important;text-align:center}
+.phead{position:relative;background:linear-gradient(0deg,#120C10 0%,rgba(18,12,16,.55) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center var(--ppos,30%)/cover,#0E0A0D!important;padding-top:110px!important;padding-bottom:56px!important;text-align:center}
 .phead .eyebrow{font-family:"Playfair Display",serif!important;font-style:italic;font-weight:400;text-transform:none!important;letter-spacing:.01em!important;font-size:clamp(34px,5vw,64px)!important;color:#fff!important;line-height:1.05}
 .phead h1{font-size:clamp(22px,2.6vw,30px)!important;color:#FF6EC7!important;letter-spacing:.12em;margin-top:10px}
 .phead h1::after{margin:16px auto 0!important}
@@ -806,7 +806,7 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 .pband{background:linear-gradient(180deg,rgba(14,10,13,.75) 0%,rgba(120,10,70,.62) 60%,rgba(255,20,147,.55) 100%),var(--img) center/cover fixed}
 .home2 .sec2{position:relative}
 .home2 .sec2::before{content:"";position:absolute;inset:-40px -20vw;z-index:-1;background:radial-gradient(50% 60% at 50% 40%,rgba(255,20,147,.14),transparent 70%);pointer-events:none}
-.phead{background:linear-gradient(0deg,rgba(255,20,147,.45) 0%,rgba(18,12,16,.6) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center 30%/cover,#0E0A0D!important}
+.phead{background:linear-gradient(0deg,rgba(255,20,147,.45) 0%,rgba(18,12,16,.6) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center var(--ppos,30%)/cover,#0E0A0D!important}
 .cta2{background:linear-gradient(135deg,#FF1493 0%,#C2187A 55%,#7A0E4C 100%)!important}
 .cta2 .eyebrow,.cta2 p{color:#fff!important}
 .cta2 h2 em{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.5)}
@@ -1132,7 +1132,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/hk2026-1.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/gymfest-5.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-1.jpg',rg:'/img/course-competition-full.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/hk2026-1.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/gymfest-5.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',rg:'/img/course-competition-full.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':'30%'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
