@@ -826,6 +826,49 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
   .chero.tall::before{display:none}
   .chero.tall .ch-in{padding-top:18px}
 }
+
+/* full footer */
+.foot2{background:linear-gradient(180deg,#2A0C20,#0B0709 40%);border-top:1px solid rgba(255,20,147,.35);color:#D9CCD2}
+.f2in{max-width:1180px;margin:0 auto;padding:56px max(24px,env(safe-area-inset-left,0px)) 30px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+.f2c{display:flex;flex-direction:column;gap:10px;min-width:0}
+.f2c h4{font-family:"Playfair Display",serif;font-size:22px;font-weight:500;color:#fff;margin:0 0 6px}
+.f2c a{color:#D9CCD2;text-decoration:none;font-size:15px}
+.f2c a:hover{color:#FF6EC7}
+.f2c p{margin:0;font-size:14.5px;line-height:1.6}
+.f2c p a{color:#FF6EC7}
+.f2logo{display:flex;align-items:center;gap:12px}
+.f2logo img{width:96px;height:auto}
+.f2logo span{font-family:"Playfair Display",serif;font-size:24px;color:#fff}
+.f2tag{color:#FF6EC7!important;font-weight:600;font-size:16px!important}
+.f2txt{color:#D9CCD2}
+.f2sg{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:6px;color:#fff;font-size:15px}
+.f2sg svg{width:26px;height:26px;flex:none;fill:none;stroke:#FF3DB4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.f2sglogo{width:170px;height:auto;border-radius:10px;background:#E8E7E8;padding:6px 10px}
+.f2soc{display:flex;gap:14px;margin-top:6px}
+.f2soc svg{width:30px;height:30px;fill:none;stroke:#D9CCD2;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.f2soc a:hover svg{stroke:#FF6EC7}
+.f2bot{text-align:center;font-size:12.5px;color:#8E7F87;padding:16px 20px 26px;border-top:1px solid rgba(255,255,255,.08)}
+@media (max-width:900px){.f2in{grid-template-columns:1fr 1fr}.f2brand{grid-column:1/-1}}
+@media (max-width:520px){.f2in{grid-template-columns:1fr}}
+/* apparatus row: thin pink line icons, evenly spread */
+.apps{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px!important;margin:14px 0 18px!important;max-width:640px}
+.apps span{gap:10px!important;font-size:15px!important;color:#fff!important;font-weight:500!important}
+.apps svg{width:46px!important;height:46px!important;padding:0!important;background:none!important;box-shadow:none!important;stroke:#FF3DB4!important;stroke-width:2!important;filter:drop-shadow(0 0 6px rgba(255,20,147,.45))}
+.pband .apps{width:100%;margin:10px auto 4px!important}
+
+.f2more{max-width:1180px;margin:0 auto;padding:46px max(24px,env(safe-area-inset-left,0px)) 10px}
+.f2mh{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(28px,3.4vw,40px);color:#fff;margin-bottom:16px}
+.f2mg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.f2m{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,110,199,.28);border-radius:16px;padding:10px 14px 10px 10px;text-decoration:none;color:#fff;transition:background .2s,transform .2s}
+.f2m:hover{background:rgba(255,20,147,.14);transform:translateY(-2px)}
+.f2m img{width:58px;height:58px;border-radius:12px;object-fit:cover;object-position:center 25%;flex:none}
+.f2m span{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.f2m b{font-size:15px;font-weight:600}
+.f2m small{font-size:12.5px;color:#C9B8C0}
+.f2m em{font-style:normal;color:#FF3DB4;font-size:18px}
+@media (max-width:900px){.f2mg{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.f2mg{grid-template-columns:1fr}}
+.pband{background:linear-gradient(180deg,rgba(14,10,13,.86) 0%,rgba(60,8,40,.82) 60%,rgba(200,20,120,.72) 100%),var(--img) center/cover fixed!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -861,7 +904,7 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
   </main>
 </div>
 
-<footer class="sgm"><h2>A member of Singapore Gymnastics</h2><div class="sgl"><img src="/img/sg-gymnastics-logo.png" alt="Singapore Gymnastics"></div></footer>
+<footer class="foot2" id="foot2"></footer>
 <div id="langBtn" role="group" aria-label="语言 Language"><button type="button" id="btn-zh" data-l="zh">中文</button><button type="button" id="btn-en" data-l="en">EN</button></div>
 <div id="lb" hidden><img alt=""></div>
 <div id="sheet" hidden><div class="sheet-card" role="dialog" aria-modal="true"><button type="button" class="sheet-x" aria-label="关闭">×</button><div id="sheetBody"></div></div></div>
@@ -968,6 +1011,36 @@ function courseView(c){
   const scan=()=>{ const seen=new Map(); document.querySelectorAll(SEL).forEach(el=>{ if(el.dataset.rv) return; el.dataset.rv=1; const p=el.parentElement; const i=seen.get(p)||0; seen.set(p,i+1); el.style.transitionDelay=Math.min(i,10)*90+'ms'; el.classList.add('rv'); io.observe(el); }); };
   new MutationObserver(scan).observe(document.getElementById('view'),{childList:true}); setTimeout(scan,0);
 })();
+
+// full footer (Rhythmic Art style), re-rendered with the page language
+function renderFoot(){
+  const f=document.getElementById('foot2'); if(!f) return;
+  const ig='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
+  const wa='<svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9c0 3 3 6 6 6l1.2-1.4-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></svg>';
+  const MORE=[['rg','什么是艺术体操','What is Rhythmic Gymnastics','五种器械，对孩子的好处','Five apparatus and how it helps children','/img/course-competition-full.jpg'],['trial','课程时间','Class Schedule','每周课表与两个场地','Weekly timetable at both venues','/img/venue-geylang.jpg'],['price','课程费用','Fees','报名费与学费','Sign-up and class fees','/img/classic2026-29.jpg'],['coach','教练团队','Our Coaches','认识我们的专业教练','Meet our coaching team','/img/hk2026-1.jpg'],['highlights','精彩回顾','Highlights','新加坡与国际比赛','Singapore and overseas competitions','/img/classic2026-40.jpg']];
+  const cur=location.hash.slice(1)||'home';
+  const more=MORE.filter(m=>m[0]!==cur).slice(0,4);
+  f.innerHTML=`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
+    <div class="f2c f2brand">
+      <a class="f2logo" href="#home"><img src="/img/logo-color.png" alt="Macia Studio"><span>Macia Studio</span></a>
+      <p class="f2tag">${T('新加坡艺术体操俱乐部','Rhythmic Gymnastics Club Singapore')}</p>
+      <p class="f2txt">${T('从第一堂课到比赛舞台，一条清楚的成长路线。','A clear path from the first class to the competition stage.')}</p>
+      <div class="f2sg"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>A member of <b>Singapore Gymnastics</b></span></div>
+      <img class="f2sglogo" src="/img/sg-gymnastics-logo.png" alt="Singapore Gymnastics">
+    </div>
+    <div class="f2c"><h4>${T('课程','Programs')}</h4>${courses.map(c=>`<a href="#course-${c.id}">${L(c,'n')}</a>`).join('')}</div>
+    <div class="f2c"><h4>${T('资讯','Information')}</h4>
+      <a href="#trial">${T('课程时间','Schedule')}</a><a href="#price">${T('课程费用','Fees')}</a><a href="#rg">${T('什么是艺术体操','What is Rhythmic Gymnastics')}</a><a href="#coach">${T('教练团队','Coaches')}</a><a href="#highlights">${T('精彩回顾','Highlights')}</a><a href="#acts">${T('丰富活动与训练','Activities & Training')}</a><a href="#shop">${T('商店','Shop')}</a><a href="#trial">${T('预约试课','Book a Trial')}</a></div>
+    <div class="f2c"><h4>${T('联系我们','Contact')}</h4>
+      <p><b>Macia Studio</b></p>
+      ${VENUES.map(v=>`<p><a href="#venue-${v.id}">${v.tt}</a><br>${v.addr}</p>`).join('')}
+      <p>WhatsApp: <a href="${WA}" target="_blank" rel="noopener">${PHONE}</a></p>
+      ${EMAIL?`<p class="sel">${EMAIL}</p>`:''}
+      <div class="f2soc"><a href="${IG}" target="_blank" rel="noopener" aria-label="Instagram">${ig}</a><a href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp">${wa}</a></div>
+    </div></div>
+    <div class="f2bot">© ${new Date().getFullYear()} Macia Studio Pte. Ltd.</div>`;
+}
+(function(){ const v=document.getElementById('view'); new MutationObserver(renderFoot).observe(v,{childList:true}); setTimeout(renderFoot,0); })();
 
 // v2 timetable built from TIMETABLE data (black · pink)
 const TTC={little:'#FF6EC7',interest:'#FF1493',intermediate:'#B9806A',dance:'#E0AE95'};
@@ -1214,6 +1287,7 @@ const V = {
       <div class="script">About Us</div>
       <h2>${T('关于我们','Who we are')}</h2>
       <p class="belief-line">${T('不只是<b>奖牌</b>，更是自信与成长','More than <b>medals</b>: confidence and growth')}</p>
+      <div class="apps">${[['competition','绳','Rope'],['intermediate','圈','Hoop'],['interest','球','Ball'],['elite','棒','Clubs'],['little','带','Ribbon']].map(([k,z,e])=>`<span><svg viewBox="0 0 48 48">${APP[k].svg}</svg>${T(z,e)}</span>`).join('')}</div>
       <p>${T('Macia Studio 是新加坡专注于儿童及青少年艺术体操培训的专业俱乐部，课程涵盖艺术体操、舞蹈技巧及体能训练。由专业教练团队指导，全面提升技术能力与艺术表现力，并提供国内外比赛机会。','Macia Studio is a professional club in Singapore dedicated to rhythmic gymnastics training for children and teenagers. Our classes cover rhythmic gymnastics, dance technique and fitness training. Led by a professional coaching team, students build both their technical skills and artistic expression, with opportunities to compete in Singapore and overseas.')}</p>
       <p>${T('我们同样重视男子艺术体操的发展，并已培养男子艺术体操学员，欢迎所有热爱舞蹈与艺术体操的男孩加入！','We also value the growth of men\'s rhythmic gymnastics and have already trained male gymnasts. Every boy who loves dance and rhythmic gymnastics is welcome to join us!')}</p>
     </section>
