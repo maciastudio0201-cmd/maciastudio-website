@@ -695,6 +695,16 @@ main{padding-top:32px!important}
 @media (max-width:900px){.coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .trial-intro .gift{background:#FF1493!important;color:#fff!important;border-radius:12px}
 .tt2 .tday.tempty .tdh{opacity:.45}
+
+/* smaller hero photo, sitting on the right and fading into black */
+@media (min-width:1101px){
+  .h2-bg{left:auto;right:4%;width:min(46%,640px);height:calc(100% - 150px);top:24px;object-fit:cover;object-position:center 30%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 85%,transparent 100%),linear-gradient(0deg,transparent 0,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 22%,#000 85%,transparent 100%);mask-composite:intersect}
+  .hero2::before{background:linear-gradient(90deg,rgba(14,10,13,.85) 0%,rgba(14,10,13,.3) 45%,transparent 60%)}
+}
+@media (max-width:1100px){
+  .h2-bg{width:78%;margin-left:auto;margin-right:auto;aspect-ratio:1110/1050;max-height:56vh;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 22%),linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(0deg,transparent 0,#000 22%),linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect}
+  .h2-in{margin-top:0!important}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
