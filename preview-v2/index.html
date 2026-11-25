@@ -8,8 +8,8 @@
 .rg-art{display:grid;gap:22px;max-width:68ch}.rg-art h2{font-family:var(--font-head);font-size:1.25rem;margin:0 0 8px;color:var(--ink)}.rg-art p{margin:0 0 10px;line-height:1.75}.rg-art a{color:var(--rose);text-decoration:underline;text-underline-offset:3px}
 /* Layout: left rail nav on wide screens, bottom tab bar on phones; one view at a time via #hash */
 :root{
-  --bg:#FFF6FA; --surface:#FFFFFF; --ink:#141014; --muted:#6F6269; --line:#F0D9E4;
-  --rose:#FF1493; --rose-soft:#FFE1EF; --gold:#B9806A; --gold-soft:#F7E6DE; --navy:#0E0A0D;
+  --bg:#120C10; --surface:#1E151B; --ink:#F7EEF2; --muted:#C2B3BA; --line:#3A2B34;
+  --rose:#FF1493; --rose-soft:#3A1830; --gold:#E0AE95; --gold-soft:#33251F; --navy:#0B0709; color-scheme:dark;
   --font-display:"Montserrat","Noto Sans SC",system-ui,sans-serif;
   --font-head:"Playfair Display","Noto Serif SC","Songti SC",serif;
   --font-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
@@ -705,6 +705,71 @@ main{padding-top:32px!important}
   .h2-bg{width:78%;margin-left:auto;margin-right:auto;aspect-ratio:1110/1050;max-height:56vh;-webkit-mask-image:linear-gradient(0deg,transparent 0,#000 22%),linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(0deg,transparent 0,#000 22%),linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect}
   .h2-in{margin-top:0!important}
 }
+
+/* every page: header text rises in, cards appear one after another */
+@keyframes pfade{from{opacity:0}to{opacity:1}}
+#view{animation:pfade .5s ease both}
+.phead>*{animation:up .8s cubic-bezier(.2,.7,.2,1) both}
+.phead>*:nth-child(2){animation-delay:.12s}.phead>*:nth-child(3){animation-delay:.24s}.phead>*:nth-child(4){animation-delay:.36s}
+/* venues list */
+.vlist{gap:22px!important}
+.vcard{background:var(--surface)!important;border:0!important;box-shadow:0 10px 30px rgba(20,16,20,.08);overflow:hidden;border-top:4px solid #FF1493!important}
+.vcard img,.vimg{border-radius:14px!important;overflow:hidden}
+/* fees */
+.fcard{border:0!important;box-shadow:0 10px 30px rgba(20,16,20,.08)}
+.fcard.dark{background:radial-gradient(120% 140% at 85% 0%,rgba(255,20,147,.3),transparent 60%),#0E0A0D!important}
+.fcard h2{font-family:"Playfair Display","Noto Serif SC",serif}
+.frow-p b{color:#FF1493}
+.fcard.dark .frow-p b{color:#FF6EC7!important}
+.ptag{background:#FF1493!important;color:#fff!important;border:0!important}
+/* trial form */
+.tform{background:var(--surface);padding:24px!important;box-shadow:0 10px 30px rgba(20,16,20,.08);border:0!important}
+.tform input,.tform select,.tform textarea,.slot-sel{border-radius:12px!important;border:1.5px solid var(--line)!important;padding:12px 14px!important;background:#fff}
+.tform input:focus,.tform select:focus,.tform textarea:focus{outline:none;border-color:#FF1493!important;box-shadow:0 0 0 3px rgba(255,20,147,.15)}
+.tform button[type=submit],.tform .submit{background:#FF1493!important;color:#fff!important;border:0!important;border-radius:999px!important;padding:14px 30px!important;font-weight:700;letter-spacing:.08em;box-shadow:0 8px 24px rgba(255,20,147,.35)}
+.trial-intro{background:var(--surface)!important;border:0!important;box-shadow:0 10px 30px rgba(20,16,20,.08);padding:22px!important}
+/* contact, shop, highlights */
+.qr{background:var(--surface)!important;border:0!important;box-shadow:0 10px 30px rgba(20,16,20,.08)}
+.cinfo{background:#0E0A0D!important;color:#fff!important;border:0!important;padding:26px!important}
+.cinfo dt{color:#FF6EC7!important}.cinfo dd,.cinfo-text{color:#F1E4E9!important}
+.cinfo a{color:#FF6EC7!important}
+.shop-cat,.shop-item,.citem,.card,.tile{border-radius:18px!important;overflow:hidden;border:0!important;box-shadow:0 10px 30px rgba(20,16,20,.08);background:var(--surface)}
+.shop-cat em,.citem .more{color:#FF1493!important}
+.gallery{gap:12px!important}
+.gallery .pic,.gallery img{border-radius:14px!important;overflow:hidden}
+.back{color:#FF1493}
+
+/* Agape-like: dark site, photo bands with large italic titles */
+body{background:#120C10}
+.card2,.ven2,.cf,.co2,.fcard,.qr,.vcard,.tform,.trial-intro,.shop-cat,.shop-item,.citem,.card,.tile,.tt2 .tslot{box-shadow:0 0 0 1px rgba(255,255,255,.06),0 14px 34px rgba(0,0,0,.35)!important}
+.tt2 .tdh{background:#2A1E25}
+.tform input,.tform select,.tform textarea,.slot-sel{background:#120C10!important;color:var(--ink)!important;border-color:#3A2B34!important}
+.phead{position:relative;background:linear-gradient(0deg,#120C10 0%,rgba(18,12,16,.55) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center 30%/cover,#0E0A0D!important;padding-top:110px!important;padding-bottom:56px!important;text-align:center}
+.phead .eyebrow{font-family:"Playfair Display",serif!important;font-style:italic;font-weight:400;text-transform:none!important;letter-spacing:.01em!important;font-size:clamp(34px,5vw,64px)!important;color:#fff!important;line-height:1.05}
+.phead h1{font-size:clamp(22px,2.6vw,30px)!important;color:#FF6EC7!important;letter-spacing:.12em;margin-top:10px}
+.phead h1::after{margin:16px auto 0!important}
+.phead .lead{margin-left:auto!important;margin-right:auto!important}
+.phead .back{text-align:left}
+.pband{margin-inline:calc(50% - 50vw);padding:110px max(24px,calc(50vw - 520px));text-align:center;color:#fff;background:linear-gradient(rgba(14,10,13,.72),rgba(14,10,13,.78)),var(--img) center/cover fixed;display:flex;flex-direction:column;align-items:center;gap:18px}
+.pband .script{font-family:"Playfair Display",serif;font-style:italic;font-weight:400;font-size:clamp(40px,6vw,76px);line-height:1;color:#fff}
+.pband h2{font-size:clamp(22px,2.6vw,30px);color:#FF6EC7;letter-spacing:.08em;font-weight:500}
+.pband p{margin:0;max-width:64ch;color:#F1E4E9;font-size:16px;line-height:1.8}
+.pband .belief-line{font-family:"Playfair Display","Noto Serif SC",serif;font-size:clamp(20px,2.4vw,26px);color:#fff}
+.pband .belief-line b{color:#FF3DB4;font-weight:500}
+@supports (-webkit-touch-callout:none){.pband{background-attachment:scroll}}
+.home2 .sec2{align-items:center;text-align:center}
+.home2 .sec2 .eyebrow{font-family:"Playfair Display",serif;font-style:italic;font-weight:400;text-transform:none;letter-spacing:.01em;font-size:clamp(34px,4.6vw,58px);color:#fff}
+.home2 .sec2 .h2s{font-size:clamp(20px,2.4vw,28px);color:#FF6EC7;font-weight:500}
+.home2 .sec2 .h2s em{color:#FF6EC7;font-style:normal}
+.home2 .cards2,.home2 .venues2{text-align:left;width:100%}
+.avs{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 26px;margin-top:6px}
+.av{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);width:110px}
+.av span.ph2{width:104px;height:104px;border-radius:50%;overflow:hidden;border:3px solid #FF1493;box-shadow:0 0 22px rgba(255,20,147,.35);background:#F3E9E4;transition:transform .2s}
+.av:hover span.ph2{transform:scale(1.06)}
+.av img{width:100%;height:auto;display:block;transform:scale(1.55);transform-origin:50% 14%}
+.av b{font-family:"Playfair Display",serif;font-weight:500;font-size:16px}
+.av small{color:#E0AE95;font-size:11.5px;text-align:center;line-height:1.4}
+@media (max-width:560px){.av{width:92px}.av span.ph2{width:86px;height:86px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -842,12 +907,13 @@ function courseView(c){
 // reveal sections as they scroll into view
 (function(){ if(!('IntersectionObserver' in window)) return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
-  const scan=()=>document.querySelectorAll('#view .rv:not(.in), #view .card2, #view .ven2, #view .belief2, #view .tile').forEach(el=>{ el.classList.add('rv'); io.observe(el); });
+  const SEL='#view .rv:not(.in), #view .card2, #view .ven2, #view .belief2, #view .tile, #view .co2, #view .cf, #view .vcard, #view .fcard, #view .qr, #view .shop-cat, #view .shop-item, #view .citem, #view .card, #view .gallery .pic, #view .tt2 .tday, #view .trial-intro, #view .tform, #view .rg-art section, #view .more-row, #view .cinfo';
+  const scan=()=>{ const seen=new Map(); document.querySelectorAll(SEL).forEach(el=>{ if(el.dataset.rv) return; el.dataset.rv=1; const p=el.parentElement; const i=seen.get(p)||0; seen.set(p,i+1); el.style.transitionDelay=Math.min(i,10)*90+'ms'; el.classList.add('rv'); io.observe(el); }); };
   new MutationObserver(scan).observe(document.getElementById('view'),{childList:true}); setTimeout(scan,0);
 })();
 
 // v2 timetable built from TIMETABLE data (black · pink)
-const TTC={little:'#FF6EC7',interest:'#FF1493',intermediate:'#B9806A',dance:'#141014'};
+const TTC={little:'#FF6EC7',interest:'#FF1493',intermediate:'#B9806A',dance:'#E0AE95'};
 function ttGrid(kind, venue, only){
   const keys = only ? [only] : (kind==='trial' ? ['little','interest','dance'] : ['little','interest','intermediate','dance']);
   const rows=[];
@@ -867,7 +933,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const PI={coach:'img/hk2026-1.jpg',courses:'img/course-elite.jpg',price:'img/classic2026-29.jpg',trial:'img/gymfest-3.jpg',venues:'img/venue-geylang.jpg',contact:'img/dubai2025-12.jpg',shop:'img/gymfest-5.jpg',highlights:'img/classic2026-40.jpg',acts:'img/gymfest-1.jpg',rg:'img/course-competition-full.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
@@ -1080,9 +1146,10 @@ const V = {
       <div class="h2-stats"><div><b>20</b><span>${T('年教学经验','Years coaching')}</span></div><div><b>100+</b><span>${T('在训学员','Students')}</span></div><div><b>3–16</b><span>${T('岁','Ages')}</span></div></div>
     </section>
 
-    <section class="belief2">
-      <div class="eyebrow">Our Belief</div>
-      <h2>${T('不只是<em>奖牌</em><br>更是自信与成长','More than <em>medals</em>:<br>confidence and growth')}</h2>
+    <section class="pband" style="--img:url(img/hk2026-1.jpg)">
+      <div class="script">About Us</div>
+      <h2>${T('关于我们','Who we are')}</h2>
+      <p class="belief-line">${T('不只是<b>奖牌</b>，更是自信与成长','More than <b>medals</b>: confidence and growth')}</p>
       <p>${T('Macia Studio 是新加坡专注于儿童及青少年艺术体操培训的专业俱乐部，课程涵盖艺术体操、舞蹈技巧及体能训练。由专业教练团队指导，全面提升技术能力与艺术表现力，并提供国内外比赛机会。','Macia Studio is a professional club in Singapore dedicated to rhythmic gymnastics training for children and teenagers. Our classes cover rhythmic gymnastics, dance technique and fitness training. Led by a professional coaching team, students build both their technical skills and artistic expression, with opportunities to compete in Singapore and overseas.')}</p>
       <p>${T('我们同样重视男子艺术体操的发展，并已培养男子艺术体操学员，欢迎所有热爱舞蹈与艺术体操的男孩加入！','We also value the growth of men\'s rhythmic gymnastics and have already trained male gymnasts. Every boy who loves dance and rhythmic gymnastics is welcome to join us!')}</p>
     </section>
@@ -1103,6 +1170,12 @@ const V = {
       <div class="cards2">${courses.map(c=>{const tag={little:['3–5 岁','Ages 3–5'],interest:['零基础','Beginners'],intermediate:['进阶','Intermediate'],competition:['考核进入','By assessment'],elite:['选拔进入','By selection'],ballet:['舞蹈 · 芭蕾 · 空翻','Dance & ballet']}[c.id]||['',''];const SH={little:['专为 3–5 岁小朋友设计的艺术体操启蒙课，在音乐和游戏中爱上运动。','A first rhythmic gymnastics class for ages 3–5, learning through music and games.'],ballet:['舞蹈基本功、芭蕾舞和舞蹈空翻技巧，小班教学。','Dance basics, ballet and dance acrobatics in small classes.']};const sh=SH[c.id]?T(SH[c.id][0],SH[c.id][1]):L(c,'t');return `<a class="card2" href="#course-${c.id}"><div class="c2-img">${c.img?`<img src="${c.img}" alt="${L(c,'n')}" loading="lazy">`:''}</div><div class="c2-b"><span class="chip2">${T(tag[0],tag[1])}</span><h3>${L(c,'n')}</h3><p>${sh}</p><span class="more2">${T('了解更多','Learn more')} →</span></div></a>`}).join('')}</div>
     </section>
 
+
+    <section class="sec2">
+      <div class="eyebrow">Our Coaches</div>
+      <h2 class="h2s">${T('专业教练团队','Our coaching team')}</h2>
+      <div class="avs">${coaches.filter(c=>c.img && !/行政/.test(c.t)).map(c=>`<a class="av" href="#coach"><span class="ph2"><img src="${c.img}" alt="${c.n}" loading="lazy"></span><b>${c.n}</b><small>${L(c,'t').split('<br>')[0]}</small></a>`).join('')}</div>
+    </section>
     <section class="sec2">
       <div class="eyebrow">Venues</div>
       <h2 class="h2s">${T('选择<em>离你最近</em>的场地','Pick the venue <em>nearest you</em>')}</h2>
