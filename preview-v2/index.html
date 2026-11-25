@@ -874,6 +874,9 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 .back,.phead .back,.ch-in .back{display:inline-flex!important;align-items:center;gap:8px;font-size:17px!important;font-weight:600;letter-spacing:.04em!important;color:#F3D27E!important;border:1.5px solid rgba(243,210,126,.6);border-radius:999px;padding:8px 18px;width:auto;align-self:flex-start;text-decoration:none}
 .back:hover{background:rgba(243,210,126,.12)}
 .phead .back{margin-bottom:22px!important}
+.ven2-img{display:block;margin:-22px -22px 4px;aspect-ratio:16/9;overflow:hidden}
+.ven2-img img{width:100%;height:100%;object-fit:cover;display:block}
+.ven2{overflow:hidden}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1022,7 +1025,7 @@ function renderFoot(){
   const f=document.getElementById('foot2'); if(!f) return;
   const ig='<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>';
   const wa='<svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9c0 3 3 6 6 6l1.2-1.4-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z"/></svg>';
-  const MORE=[['rg','什么是艺术体操','What is Rhythmic Gymnastics','五种器械，对孩子的好处','Five apparatus and how it helps children','/img/course-competition-full.jpg'],['trial','课程时间','Class Schedule','每周课表与两个场地','Weekly timetable at both venues','/img/venue-geylang.jpg'],['price','课程费用','Fees','报名费与学费','Sign-up and class fees','/img/classic2026-29.jpg'],['coach','教练团队','Our Coaches','认识我们的专业教练','Meet our coaching team','/img/hk2026-1.jpg'],['highlights','精彩回顾','Highlights','新加坡与国际比赛','Singapore and overseas competitions','/img/classic2026-40.jpg']];
+  const MORE=[['rg','什么是艺术体操','What is Rhythmic Gymnastics','五种器械，对孩子的好处','Five apparatus and how it helps children','/img/course-competition-full.jpg'],['trial','课程时间','Class Schedule','每周课表与两个场地','Weekly timetable at both venues','/img/venue-chaichee.jpg'],['price','课程费用','Fees','报名费与学费','Sign-up and class fees','/img/classic2026-29.jpg'],['coach','教练团队','Our Coaches','认识我们的专业教练','Meet our coaching team','/img/hk2026-1.jpg'],['highlights','精彩回顾','Highlights','新加坡与国际比赛','Singapore and overseas competitions','/img/classic2026-40.jpg']];
   const cur=location.hash.slice(1)||'home';
   const more=MORE.filter(m=>m[0]!==cur).slice(0,4);
   f.innerHTML=`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
@@ -1067,7 +1070,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/hk2026-1.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-geylang.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/gymfest-5.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-1.jpg',rg:'/img/course-competition-full.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/hk2026-1.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/gymfest-5.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-1.jpg',rg:'/img/course-competition-full.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
@@ -1321,7 +1324,7 @@ const V = {
     <section class="sec2">
       <div class="eyebrow">Venues</div>
       <h2 class="h2s">${T('选择<em>离你最近</em>的场地','Pick the venue <em>nearest you</em>')}</h2>
-      <div class="venues2">${VENUES.map(v=>`<div class="ven2"><h3>${T(v.n,v.nEn)}</h3><p>${v.addr}</p><div class="h2-btns"><a class="btn-pink sm" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line dark sm" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div><a class="more2" href="#venue-${v.id}">${T('课程时间','Timetable')} →</a></div>`).join('')}</div>
+      <div class="venues2">${VENUES.map(v=>`<div class="ven2">${v.img?`<a class="ven2-img" href="#venue-${v.id}"><img src="${v.img}" alt="${T(v.n,v.nEn)}" loading="lazy"></a>`:''}<h3>${T(v.n,v.nEn)}</h3><p>${v.addr}</p><div class="h2-btns"><a class="btn-pink sm" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line dark sm" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div><a class="more2" href="#venue-${v.id}">${T('课程时间','Timetable')} →</a></div>`).join('')}</div>
     </section>
 
 
