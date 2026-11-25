@@ -669,7 +669,7 @@ const coaches = [
   {n:"Vincent", img:"img/coach-vincent-zh-v2.jpg", imgEn:"img/coach-vincent-en-v2.jpg", t:"体操总教练<br>体能 · 舞蹈技巧 · 私教课", tEn:"Head Gymnastics Coach<br>Strength & Conditioning · Dance Technique<br>Private Coaching", p:12},
   {n:"He", img:"img/coach-he-zh-v2.jpg", imgEn:"img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13}
 ];
-const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<span class="chip">${L(c,'n')}</span>`).join('')}</div>`;
+const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<a class="chip" href="#course-${c.id}">${L(c,'n')} →</a>`).join('')}</div>`;
 const place = (e) => '';
 const yr = (pid, y, extra={}) => ({id:`${pid}-${y}`, n:String(y), y, ...extra});
 const TREE = [

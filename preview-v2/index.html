@@ -768,6 +768,13 @@ body{background:#120C10}
 #view.splitv .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
 #view.splitv .coaches2{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{background:#FF1493;color:#fff;border-color:#FF1493}
+.tt2{grid-template-columns:repeat(7,minmax(118px,1fr))!important;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
+.tt2 .tday.tempty{display:flex!important}
+.tt2 .tdh{text-align:center!important;padding:10px 4px!important}
+.tt2 .tday.tempty .tdh{opacity:.45}
+.tt2hint{display:block;font-size:12px;color:#E8BE5A}
+@media(max-width:1100px){.tt2hint{display:block}}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1155,7 +1162,7 @@ function ttGrid(kind, venue, only){
   const used=[...new Set(rows.map(r=>r.k))];
   const legend=`<div class="tt2legend">${used.map(k=>`<span><i style="background:${TTC[k]}"></i>${k==='dance'?T('舞蹈 · 芭蕾 · 空翻','Dance · Ballet · Acro'):L(courses.find(c=>c.id===k),'n')}</span>`).join('')}</div>`;
   const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="tday${rs.length?'':' tempty'}"><div class="tdh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="tslot" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="tcn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="tvt${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="tnone">—</div>`}</div>`}).join('')}</div>`;
-  return `<div class="tt2wrap">${legend}${grid}</div>`;
+  return `<div class="tt2wrap">${legend}<div class="tt2hint">${T('← 左右滑动查看一周课表 →','← Swipe to see the whole week →')}</div>${grid}</div>`;
 }
 function courseCards(){
   const SH={little:['专为 3–5 岁小朋友设计的艺术体操启蒙课，在音乐和游戏中爱上运动。','A first rhythmic gymnastics class for ages 3–5, learning through music and games.'],ballet:['舞蹈基本功、芭蕾舞和舞蹈空翻技巧，小班教学。','Dance basics, ballet and dance acrobatics in small classes.']};
@@ -1199,7 +1206,7 @@ const coaches = [
   {n:"Vincent", img:"/img/coach-vincent-zh-v2.jpg", imgEn:"/img/coach-vincent-en-v2.jpg", t:"体操总教练<br>体能 · 舞蹈技巧 · 私教课", tEn:"Head Gymnastics Coach<br>Strength & Conditioning · Dance Technique<br>Private Coaching", p:12},
   {n:"He", img:"/img/coach-he-zh-v2.jpg", imgEn:"/img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13}
 ];
-const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<span class="chip">${L(c,'n')}</span>`).join('')}</div>`;
+const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<a class="chip" href="#course-${c.id}">${L(c,'n')} →</a>`).join('')}</div>`;
 const place = (e) => '';
 const yr = (pid, y, extra={}) => ({id:`${pid}-${y}`, n:String(y), y, ...extra});
 const TREE = [
