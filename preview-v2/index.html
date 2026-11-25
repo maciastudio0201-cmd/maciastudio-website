@@ -843,7 +843,7 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 .f2txt{color:#D9CCD2}
 .f2sg{display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:16px;margin-top:6px;color:#fff;font-size:15px}
 .f2sg svg{width:26px;height:26px;flex:none;fill:none;stroke:#FF3DB4;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.f2sglogo{width:170px;height:auto;border-radius:10px;background:#E8E7E8;padding:6px 10px}
+.f2sglogo{width:210px;height:auto;border-radius:10px;background:#E8E7E8;padding:6px 10px}
 .f2soc{display:flex;gap:14px;margin-top:6px}
 .f2soc svg{width:30px;height:30px;fill:none;stroke:#D9CCD2;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .f2soc a:hover svg{stroke:#FF6EC7}
@@ -1051,10 +1051,11 @@ function renderFoot(){
   document.querySelectorAll('#view .cta2').forEach(x=>x.remove());
   f.innerHTML=bigCta+`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
     <div class="f2c f2brand">
-      <a class="f2logo" href="#home"><img src="/img/logo-color.png" alt="Macia Studio"><span>Macia Studio</span></a>
+      <a class="f2logo" href="#home"><span>Macia Studio</span></a>
       <p class="f2tag">${T('新加坡艺术体操俱乐部','Rhythmic Gymnastics Club Singapore')}</p>
       <p class="f2txt">${T('从第一堂课到比赛舞台，一条清楚的成长路线。','A clear path from the first class to the competition stage.')}</p>
       <div class="f2sg"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>A member of <b>Singapore Gymnastics</b></span></div>
+      <img class="f2sglogo" src="/img/sg-gymnastics-logo.png" alt="Singapore Gymnastics">
     </div>
     <div class="f2c"><h4>${T('课程','Programs')}</h4>${courses.map(c=>`<a href="#course-${c.id}">${L(c,'n')}</a>`).join('')}</div>
     <div class="f2c"><h4>${T('资讯','Information')}</h4>
