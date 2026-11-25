@@ -538,7 +538,8 @@ html[lang^="zh"] h1 em,html[lang^="zh"] h2 em{font-style:normal}
 .h2-t::after{display:none}
 .h2-t em{color:#FF4FA8}
 html[lang^="zh"] .h2-t{max-width:9.5em}
-.h2-in p{margin:0;max-width:44ch;color:#F1E4E9;font-size:16px}
+.h2-in p{margin:0;max-width:46ch;color:#F1E4E9;font-size:17px;line-height:1.7}
+.h2-in p b{color:#FF7DB8;font-weight:600}
 .h2-stats{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:0;border-top:1px solid rgba(242,198,180,.25);background:rgba(14,10,13,.55);backdrop-filter:blur(6px)}
 .h2-stats div{flex:1;max-width:300px;text-align:center;padding:18px 10px;display:flex;flex-direction:column;gap:2px}
 .h2-stats div+div{border-left:1px solid rgba(242,198,180,.2)}
@@ -930,7 +931,7 @@ const V = {
       <div class="h2-in">
         <div class="h2-head"><div class="h2-brand">MACIA STUDIO</div><div class="h2-eb">RHYTHMIC GYMNASTICS · SINGAPORE</div></div>
         <h1 class="h2-t">${T('让孩子在<em>艺术体操</em>中<br>绽放自信','Begin your <em>rhythmic gymnastics</em> journey')}</h1>
-        <p>${T('Macia Studio 新加坡艺术体操俱乐部。3–16 岁，零基础到精英，ALJUNIED 与 SGB 两个场地。','Macia Studio, rhythmic gymnastics in Singapore. Ages 3–16, beginner to elite, at two venues: ALJUNIED and SGB.')}</p>
+        <p>${T('从第一堂课到领奖台，每一步都有专业教练陪伴。<br><b>现在预约试课，送精美纪念品！</b>','From the first class to the podium, expert coaches guide every step.<br><b>Book a trial today and receive a special gift!</b>')}</p>
         <div class="h2-btns"><a class="btn-pink" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div>
       </div>
       <div class="h2-stats"><div><b>20</b><span>${T('年教学经验','Years coaching')}</span></div><div><b>100+</b><span>${T('在训学员','Students')}</span></div><div><b>3–16</b><span>${T('岁','Ages')}</span></div></div>
