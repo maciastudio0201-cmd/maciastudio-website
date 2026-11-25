@@ -662,17 +662,17 @@ main{padding-top:32px!important}
 .tt2legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--surface);box-shadow:0 2px 8px rgba(20,16,20,.06)}
 .tt2legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
 .tt2{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
-.tt2 .day{display:flex;flex-direction:column;gap:8px;min-width:0}
-.tt2 .dh{background:#0E0A0D;color:#fff;text-align:center;border-radius:12px;padding:10px 4px;font-family:var(--font-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
-.tt2 .dh.we{background:#FF1493}
-.tt2 .slot{background:var(--surface);border-radius:12px;padding:10px 10px 11px;box-shadow:0 4px 14px rgba(20,16,20,.06);border-left:4px solid var(--c);display:flex;flex-direction:column;gap:3px;font-size:13px}
-.tt2 .slot b{font-size:13.5px}
-.tt2 .slot .cn{font-weight:700;color:var(--c)}
-.tt2 .slot small{color:var(--muted)}
-.tt2 .vtag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:2px 7px;border-radius:999px;background:#0E0A0D;color:#F2C6B4}
-.tt2 .vtag.sgb{background:#FF1493;color:#fff}
-.tt2 .none{color:var(--muted);font-size:12px;text-align:center;padding:8px 0}
-@media (max-width:900px){.tt2{grid-template-columns:1fr}.tt2 .day.empty{display:none}.tt2 .dh{text-align:left;padding:8px 14px}}
+.tt2 .tday{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tt2 .tdh{background:#0E0A0D;color:#fff;text-align:center;border-radius:12px;padding:10px 4px;font-family:var(--font-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.tt2 .tdh.we{background:#FF1493}
+.tt2 .tslot{background:var(--surface);border-radius:12px;padding:10px 10px 11px;box-shadow:0 4px 14px rgba(20,16,20,.06);border-left:4px solid var(--c);display:flex;flex-direction:column;gap:3px;font-size:13px}
+.tt2 .tslot b{font-size:13.5px}
+.tt2 .tslot .tcn{font-weight:700;color:var(--c)}
+.tt2 .tslot small{color:var(--muted)}
+.tt2 .tvt{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:2px 7px;border-radius:999px;background:#0E0A0D;color:#F2C6B4}
+.tt2 .tvt.sgb{background:#FF1493;color:#fff}
+.tt2 .tnone{color:var(--muted);font-size:12px;text-align:center;padding:8px 0}
+@media (max-width:900px){.tt2{grid-template-columns:1fr}.tt2 .tday.tempty{display:none}.tt2 .tdh{text-align:left;padding:8px 14px}}
 /* coaches */
 .coaches{gap:18px}
 .coach.card-img{border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(20,16,20,.1);transition:transform .2s,box-shadow .2s;border:0}
@@ -693,6 +693,8 @@ main{padding-top:32px!important}
 .co2-b h3{color:#fff;font-size:22px;font-weight:500}
 .co2-b p{margin:0;color:#F2C6B4;font-size:13px;line-height:1.6}
 @media (max-width:900px){.coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.trial-intro .gift{background:#FF1493!important;color:#fff!important;border-radius:12px}
+.tt2 .tday.tempty .tdh{opacity:.45}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -845,7 +847,7 @@ function ttGrid(kind, venue, only){
   const cname=r=> r.k==='dance' ? T(r.a[0],r.a[1]) : L(courses.find(c=>c.id===(r.k==='intermediate'?'intermediate':r.k)),'n');
   const used=[...new Set(rows.map(r=>r.k))];
   const legend=`<div class="tt2legend">${used.map(k=>`<span><i style="background:${TTC[k]}"></i>${k==='dance'?T('舞蹈 · 芭蕾 · 空翻','Dance · Ballet · Acro'):L(courses.find(c=>c.id===k),'n')}</span>`).join('')}</div>`;
-  const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="day${rs.length?'':' empty'}"><div class="dh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="slot" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="cn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="vtag${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="none">—</div>`}</div>`}).join('')}</div>`;
+  const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="tday${rs.length?'':' tempty'}"><div class="tdh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="tslot" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="tcn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="tvt${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="tnone">—</div>`}</div>`}).join('')}</div>`;
   return `<div class="tt2wrap">${legend}${grid}</div>`;
 }
 function courseCards(){
