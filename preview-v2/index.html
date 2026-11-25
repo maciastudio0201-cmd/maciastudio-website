@@ -883,6 +883,14 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 .cta2.big p{font-size:17px}
 .btn-pink.xl,.btn-line.xl{padding:18px 40px;font-size:16px}
 .cta2 .btn-line{border-color:#fff}
+
+html{overflow-x:hidden}
+.navtrial{display:none!important}
+@media (max-width:1180px){
+  .navtrial{display:inline-flex!important;margin-left:auto;align-items:center;background:#FF1493;color:#fff!important;border-radius:999px;padding:9px 18px!important;font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-decoration:none;box-shadow:0 0 18px rgba(255,20,147,.45)}
+  .navlinks a[data-v=trial]{display:none!important}
+  #langBtn{bottom:auto!important;top:calc(env(safe-area-inset-top,0px) + 12px)!important;right:auto!important;left:50%!important;transform:translateX(-50%)}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -895,7 +903,7 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 <div class="app">
   <nav class="rail" id="mainnav" aria-label="主菜单">
     <a class="brand" href="#home"><img class="brand-logo" src="/img/logo-color.png" alt="Macia"><span class="brand-name">Macia Studio</span></a>
-    <div class="brand-line"></div><div class="navlinks">
+    <div class="brand-line"></div><a class="navtrial" href="#trial"><span data-zh="预约试课" data-en="Book a Trial">预约试课</span></a><div class="navlinks">
     <a href="#home" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span data-zh="首页" data-en="Home">首页</span></a>
     <a href="#coach" data-v="coach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span data-zh="教练" data-en="Coaches">教练</span></a>
     <a href="#courses" data-v="courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span data-zh="课程" data-en="Courses">课程</span></a>
