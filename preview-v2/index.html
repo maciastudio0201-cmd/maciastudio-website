@@ -645,6 +645,54 @@ main{padding-top:32px!important}
 .cgal img{width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:18px;display:block}
 .cgal .stack{display:grid;gap:14px}
 @media (max-width:820px){.chero{margin-top:-20px;min-height:70vh}.cfeat{grid-template-columns:1fr}.cgal{grid-template-columns:1fr}}
+
+/* page header band for every inner page */
+.phead{margin-inline:calc(50% - 50vw);margin-top:-32px;padding:64px max(28px,env(safe-area-inset-left,0px)) 44px;background:radial-gradient(90% 140% at 85% 0%,rgba(255,20,147,.32),transparent 60%),#0E0A0D;color:#fff}
+.phead>*{max-width:1180px;margin-left:auto;margin-right:auto}
+.phead .back{display:block;color:#F2C6B4;text-decoration:none;font-size:13px;letter-spacing:.08em;margin-bottom:14px}
+.phead .eyebrow{color:#FF6EC7}
+.phead h1{font-size:clamp(36px,5.4vw,62px);font-weight:500;color:#fff;line-height:1.08;margin-top:8px}
+.phead h1::after{background:#FF1493;width:64px;height:2px;margin-top:18px}
+.phead .lead{color:#E9DCE2;margin-top:14px}
+.phead .lead a{color:#FF6EC7}
+@media (max-width:820px){.phead{margin-top:-20px;padding:44px 20px 32px}}
+/* timetable */
+.tt2wrap{display:flex;flex-direction:column;gap:14px}
+.tt2legend{display:flex;flex-wrap:wrap;gap:8px}
+.tt2legend span{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:4px 12px;border-radius:999px;background:var(--surface);box-shadow:0 2px 8px rgba(20,16,20,.06)}
+.tt2legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.tt2{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+.tt2 .day{display:flex;flex-direction:column;gap:8px;min-width:0}
+.tt2 .dh{background:#0E0A0D;color:#fff;text-align:center;border-radius:12px;padding:10px 4px;font-family:var(--font-display);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+.tt2 .dh.we{background:#FF1493}
+.tt2 .slot{background:var(--surface);border-radius:12px;padding:10px 10px 11px;box-shadow:0 4px 14px rgba(20,16,20,.06);border-left:4px solid var(--c);display:flex;flex-direction:column;gap:3px;font-size:13px}
+.tt2 .slot b{font-size:13.5px}
+.tt2 .slot .cn{font-weight:700;color:var(--c)}
+.tt2 .slot small{color:var(--muted)}
+.tt2 .vtag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:2px 7px;border-radius:999px;background:#0E0A0D;color:#F2C6B4}
+.tt2 .vtag.sgb{background:#FF1493;color:#fff}
+.tt2 .none{color:var(--muted);font-size:12px;text-align:center;padding:8px 0}
+@media (max-width:900px){.tt2{grid-template-columns:1fr}.tt2 .day.empty{display:none}.tt2 .dh{text-align:left;padding:8px 14px}}
+/* coaches */
+.coaches{gap:18px}
+.coach.card-img{border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(20,16,20,.1);transition:transform .2s,box-shadow .2s;border:0}
+.coach.card-img:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(255,20,147,.22)}
+.coach.card-img img{display:block}
+/* other cards */
+.fcard,.qr,.vcard,.shop-cat,.citem,.tform,.trial-intro,.cinfo{border-radius:18px!important}
+.trial-btn{background:#FF1493!important;color:#fff!important;border-radius:999px!important}
+.more-row{border-radius:999px!important;border-color:#FF1493!important}
+.more-row em{color:#FF1493!important}
+
+.coaches2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.co2{background:#0E0A0D;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(20,16,20,.12);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.co2:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(255,20,147,.25)}
+.co2-ph{aspect-ratio:424/330;overflow:hidden;background:#F3E9E4}
+.co2-ph img{width:100%;height:auto;display:block}
+.co2-b{padding:14px 16px 18px;border-top:3px solid #FF1493;display:flex;flex-direction:column;gap:6px}
+.co2-b h3{color:#fff;font-size:22px;font-weight:500}
+.co2-b p{margin:0;color:#F2C6B4;font-size:13px;line-height:1.6}
+@media (max-width:900px){.coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -775,7 +823,7 @@ function courseView(c){
   const others = courses.filter(o=>o.id!==c.id && o.img).slice(0,2);
   const gal = `<section class="cgal rv"><img src="${c.img}" alt="" loading="lazy"><div class="stack">${others.map(o=>`<img src="${o.img}" alt="" loading="lazy">`).join('')}</div></section>`;
   const rate = `<section class="sec2 rv">${ratingBox(c)}</section>`;
-  const tt = c.tt ? `<section class="sec2 rv"><div class="eyebrow">Timetable</div><h2 class="h2s">${T('上课<em>时间</em>','Class <em>times</em>')}</h2>${schedPic(sch(c.tt==='dance'?'trial':'all'), T(c.tt==='dance'?'试课课表':'课表',c.tt==='dance'?'Trial Class Schedule':'Class Schedule'))}</section>` : '';
+  const tt = c.tt ? `<section class="sec2 rv"><div class="eyebrow">Timetable</div><h2 class="h2s">${T('上课<em>时间</em>','Class <em>times</em>')}</h2>${ttGrid('course',null,c.tt)}</section>` : (c.sched ? `<section class="sec2 rv"><div class="eyebrow">Timetable</div><h2 class="h2s">${T('训练<em>时间</em>','Training <em>times</em>')}</h2>${schedPic(c.sched, T('训练时间','Training times'))}</section>` : '');
   const cta = `<section class="cta2"><div class="eyebrow">Trial Class</div><h2>${T('预约一堂<em>试课</em>','Book a <em>trial class</em>')}</h2><p>${T('凡来试课，送精美纪念品！','Every trial comes with a special gift!')}</p><div class="h2-btns"><a class="btn-pink" href="#trial">${T('立即预约','Book now')}</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></section>`;
   return head + feat + tt + cta;
 }
@@ -784,6 +832,31 @@ function courseView(c){
   const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }),{rootMargin:'0px 0px -8% 0px'});
   const scan=()=>document.querySelectorAll('#view .rv:not(.in), #view .card2, #view .ven2, #view .belief2, #view .tile').forEach(el=>{ el.classList.add('rv'); io.observe(el); });
   new MutationObserver(scan).observe(document.getElementById('view'),{childList:true}); setTimeout(scan,0);
+})();
+
+// v2 timetable built from TIMETABLE data (black · pink)
+const TTC={little:'#FF6EC7',interest:'#FF1493',intermediate:'#B9806A',dance:'#141014'};
+function ttGrid(kind, venue, only){
+  const keys = only ? [only] : (kind==='trial' ? ['little','interest','dance'] : ['little','interest','intermediate','dance']);
+  const rows=[];
+  keys.forEach(k=>(TIMETABLE[k]||[]).forEach(r=>{ if(!venue || r[3]===venue) rows.push({k,d:r[0],t:r[1],a:r[2],v:r[3]}); }));
+  const mins=t=>{const m=t.match(/(\d+):(\d+)\s*(am|pm)?/i);let h=+m[1];const pm=/pm/i.test(t.split('–')[0])||(!/am/i.test(t.split('–')[0])&&/pm/i.test(t)&&h<12);if(pm&&h<12)h+=12;return h*60+(+m[2]);};
+  const DN={mon:['周一','Mon'],tue:['周二','Tue'],wed:['周三','Wed'],thu:['周四','Thu'],fri:['周五','Fri'],sat:['周六','Sat'],sun:['周日','Sun']};
+  const cname=r=> r.k==='dance' ? T(r.a[0],r.a[1]) : L(courses.find(c=>c.id===(r.k==='intermediate'?'intermediate':r.k)),'n');
+  const used=[...new Set(rows.map(r=>r.k))];
+  const legend=`<div class="tt2legend">${used.map(k=>`<span><i style="background:${TTC[k]}"></i>${k==='dance'?T('舞蹈 · 芭蕾 · 空翻','Dance · Ballet · Acro'):L(courses.find(c=>c.id===k),'n')}</span>`).join('')}</div>`;
+  const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="day${rs.length?'':' empty'}"><div class="dh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="slot" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="cn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="vtag${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="none">—</div>`}</div>`}).join('')}</div>`;
+  return `<div class="tt2wrap">${legend}${grid}</div>`;
+}
+function courseCards(){
+  const SH={little:['专为 3–5 岁小朋友设计的艺术体操启蒙课，在音乐和游戏中爱上运动。','A first rhythmic gymnastics class for ages 3–5, learning through music and games.'],ballet:['舞蹈基本功、芭蕾舞和舞蹈空翻技巧，小班教学。','Dance basics, ballet and dance acrobatics in small classes.']};
+  const TAG={little:['3–5 岁','Ages 3–5'],interest:['零基础','Beginners'],intermediate:['进阶','Intermediate'],competition:['考核进入','By assessment'],elite:['选拔进入','By selection'],ballet:['舞蹈 · 芭蕾 · 空翻','Dance & ballet']};
+  return `<div class="cards2">${courses.map(c=>{const tag=TAG[c.id]||['',''];const sh=SH[c.id]?T(SH[c.id][0],SH[c.id][1]):L(c,'t');return `<a class="card2" href="#course-${c.id}"><div class="c2-img">${c.img?`<img src="${c.img}" alt="${L(c,'n')}" loading="lazy">`:''}</div><div class="c2-b"><span class="chip2">${T(tag[0],tag[1])}</span><h3>${L(c,'n')}</h3><p>${sh}</p><span class="more2">${T('了解更多','Learn more')} →</span></div></a>`}).join('')}</div>`;
+}
+// move the back link into the page header and mark it as a header band
+(function(){ const v=document.getElementById('view');
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
   {id:'geylang', img:'img/venue-geylang.jpg', n:'亚龙 23 巷训练场馆（ALJUNIED）', nEn:'Lorong 23 Geylang (ALJUNIED)', addr:"D'Innova Building<br>60 Lorong 23 Geylang, Singapore 388384", tt:'ALJUNIED', q:"D'Innova Building 60 Lorong 23 Geylang Singapore 388384"},
@@ -798,7 +871,7 @@ function venueView(v){
   const cname = k => L(courses.find(c=>c.id===k),'n');
   return `<a class="back" href="#venues">← ${T('返回训练场馆','Back to Venues')}</a>
     <div><div class="eyebrow">Venues</div><h1>${T(v.n,v.nEn)}</h1><p class="lead">${mapLink(v)}</p></div>
-    ${schedPic(sch('all'), T('课表','Class Schedule'))}
+    ${ttGrid('all',v.tt)}
     <a class="more-row" href="#trial"><span>${T('预约试课','Book a trial class')}<small>${T('选好时段，填写表格即可','Pick a slot and fill in the form')}</small></span><em>&nbsp;→</em></a>`;
 }
 const mapUrl = v => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(v.q);
@@ -1048,7 +1121,7 @@ const V = {
       <p class="attire"><b>${T('温馨提醒','Reminder')}</b>${T('请穿贴身运动服，带好水壶。','Wear fitted sportswear and bring a water bottle.')}</p>
       <p class="see-you">${T('我们期待与你相见！','We look forward to seeing you!')}</p>
     </div>
-    ${schedPic(sch('trial'), T('试课课表','Trial Class Schedule'))}
+    ${ttGrid('trial')}
     <form class="tform" id="trialForm" novalidate>
       <fieldset>
         <legend>${T('选择试课时段','Choose a time slot')}</legend>
@@ -1070,12 +1143,10 @@ const V = {
       <button class="trial-btn" type="submit">${T('提交','Submit')}&nbsp;→</button>
       <p class="fhint">${T('提交后会打开 WhatsApp，<br>行政会尽快与您确认。','Submitting opens WhatsApp. Our admin will confirm with you shortly.')}</p><a class="wa-ask wa-btn wa-form" href="${WA}" target="_blank" rel="noopener"><span class="wa-i"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#D9A08A" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.3-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.4 9.8 10.2 5.1 16 5.1s10.6 4.7 10.6 10.5S21.8 26.1 16 26.1zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.1 1.4 3.4c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg></span><span>${T('不想填表？WhatsApp 咨询','No form? Chat on WhatsApp')}</span><em>→</em></a>
     </form>`,
-  courses: () => `
-    <div><div class="eyebrow">Courses</div><h1>${T('课程介绍','Our Courses')}</h1></div>
-    <div class="clist">${courses.map(c=>`<a class="citem" href="#course-${c.id}">${c.img?`<div class="ph"><img src="${c.img}" alt="${L(c,'n')}"></div>`:''}<div class="cbody"><h2 class="c-title">${appIcon(c.id,34)}${L(c,'n')}</h2><span class="more">${T('更多','More')}&nbsp;→</span></div></a>`).join('')}</div>`,
+  courses: () => `<div><div class="eyebrow">Courses</div><h1>${T('课程介绍','Our Courses')}</h1><p class="lead">${T('从 3 岁启蒙到精英比赛，每个孩子都有适合的班。','From first steps at age 3 to elite competition, there is a class for every child.')}</p></div>${courseCards()}`,
   coach: () => `
     <div><div class="eyebrow">Coaches</div><h1>${T('教练团队','Our Coaches')}</h1><p class="lead">${T('认识我们的专业教练团队。','Meet our professional coaching team.')}</p></div>
-    <div class="coaches">${coaches.map(c=>c.img?`<div class="coach card-img"><img src="${T(c.img,c.imgEn||c.img)}" alt="${c.n} – ${L(c,'t').replace(/<br>/g,' · ')}" loading="lazy"></div>`:`<div class="coach"><h3>${c.n}</h3><div class="teach">${L(c,'t')}</div></div>`).join('')}</div>
+    <div class="coaches2">${coaches.map(c=>`<div class="co2">${c.img?`<div class="co2-ph"><img src="${c.img}" alt="${c.n}" loading="lazy"></div>`:''}<div class="co2-b"><h3>${c.n}</h3><p>${L(c,'t')}</p></div></div>`).join('')}</div>
     <a class="more-row" href="${WA}" target="_blank" rel="noopener"><span>${T('想了解更多教练详情，请与我们联系','Want to know more about our coaches? Contact us')}<small>${T('点击 WhatsApp 咨询我们的行政','Chat with our admin on WhatsApp')}</small></span><em>&nbsp;→</em></a>`,
   venues: () => `
     <div><div class="eyebrow">Venues</div><h1>${T('训练场馆','Training Venues')}</h1></div>
