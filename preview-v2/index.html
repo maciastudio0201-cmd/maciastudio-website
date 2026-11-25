@@ -877,6 +877,12 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 .ven2-img{display:block;margin:-22px -22px 4px;aspect-ratio:16/9;overflow:hidden}
 .ven2-img img{width:100%;height:100%;object-fit:cover;display:block}
 .ven2{overflow:hidden}
+
+.foot2 .cta2.big{margin:0;padding:90px 24px 96px}
+.cta2.big h2{font-size:clamp(46px,7vw,92px)!important;line-height:1.05}
+.cta2.big p{font-size:17px}
+.btn-pink.xl,.btn-line.xl{padding:18px 40px;font-size:16px}
+.cta2 .btn-line{border-color:#fff}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1028,7 +1034,9 @@ function renderFoot(){
   const MORE=[['rg','什么是艺术体操','What is Rhythmic Gymnastics','五种器械，对孩子的好处','Five apparatus and how it helps children','/img/course-competition-full.jpg'],['trial','课程时间','Class Schedule','每周课表与两个场地','Weekly timetable at both venues','/img/venue-chaichee.jpg'],['price','课程费用','Fees','报名费与学费','Sign-up and class fees','/img/classic2026-29.jpg'],['coach','教练团队','Our Coaches','认识我们的专业教练','Meet our coaching team','/img/hk2026-1.jpg'],['highlights','精彩回顾','Highlights','新加坡与国际比赛','Singapore and overseas competitions','/img/classic2026-40.jpg']];
   const cur=location.hash.slice(1)||'home';
   const more=MORE.filter(m=>m[0]!==cur).slice(0,4);
-  f.innerHTML=`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
+  const bigCta = (cur==='trial') ? '' : `<section class="cta2 big"><div class="eyebrow">Trial Class</div><h2>${T('预约<em>试课</em>','Book a <em>Trial Class</em>')}</h2><p>${T('凡来试课，送精美纪念品！3 岁起，零基础也可以。','Every trial comes with a special gift! From age 3, no experience needed.')}</p><div class="h2-btns"><a class="btn-pink xl" href="#trial">${T('立即预约试课','Book a trial now')}</a><a class="btn-line xl" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></section>`;
+  document.querySelectorAll('#view .cta2').forEach(x=>x.remove());
+  f.innerHTML=bigCta+`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
     <div class="f2c f2brand">
       <a class="f2logo" href="#home"><img src="/img/logo-color.png" alt="Macia Studio"><span>Macia Studio</span></a>
       <p class="f2tag">${T('新加坡艺术体操俱乐部','Rhythmic Gymnastics Club Singapore')}</p>
