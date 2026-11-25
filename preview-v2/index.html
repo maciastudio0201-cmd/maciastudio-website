@@ -895,6 +895,39 @@ html{overflow-x:hidden}
 .inpics .pic{border:0;padding:0;background:none;border-radius:18px;overflow:hidden;width:min(360px,100%);box-shadow:0 0 0 1px rgba(255,110,199,.3),0 16px 40px rgba(255,20,147,.25);cursor:zoom-in}
 .inpics img{width:100%!important;height:auto!important;display:block;object-fit:contain!important;position:static!important;aspect-ratio:auto!important}
 .inpics .pic{aspect-ratio:auto!important;height:auto!important}
+
+/* every photo frame: blurred copy of the photo behind it, text on a soft gradient over the photo */
+.blurfill{position:relative;overflow:hidden;isolation:isolate}
+.blurfill::before{content:"";position:absolute;inset:-30px;z-index:0;background:var(--bgimg) center/cover no-repeat;filter:blur(22px) saturate(1.2) brightness(.75);transform:scale(1.08)}
+.blurfill>img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain!important}
+.card2{position:relative;border-bottom:0!important}
+.card2 .c2-img{aspect-ratio:4/5}
+.card2 .c2-img>img{object-fit:cover!important;object-position:center 20%}
+.card2 .c2-b{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:80px 18px 18px;background:linear-gradient(0deg,rgba(14,10,13,.96) 0%,rgba(14,10,13,.82) 45%,rgba(14,10,13,0) 100%)}
+.card2 .c2-b::before{content:"";position:absolute;inset:0;z-index:-1;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);-webkit-mask-image:linear-gradient(0deg,#000 55%,transparent);mask-image:linear-gradient(0deg,#000 55%,transparent)}
+.card2 .c2-b h3{color:#fff;font-size:24px}
+.card2 .c2-b p{color:#E9DCE2}
+.co2{position:relative}
+.co2-ph{aspect-ratio:424/440!important}
+.co2-ph.blurfill>img{object-fit:cover!important;object-position:center top;height:auto!important;min-height:100%}
+.co2-b{position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:0!important;padding:46px 16px 14px!important;background:linear-gradient(0deg,rgba(14,10,13,.95) 0%,rgba(14,10,13,.78) 50%,rgba(14,10,13,0) 100%)}
+.co2-b::before{display:none}
+.co2::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:#FF1493;z-index:3}
+.ven2-img.blurfill>img,.wall a.blurfill>img,.tile .ph.blurfill>img,.citem .ph.blurfill>img{object-fit:cover!important}
+.ven2-img{position:relative}
+.ven2-img::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;z-index:2;background:linear-gradient(0deg,var(--surface),transparent)}
+.wall a::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;z-index:2;background:linear-gradient(0deg,rgba(14,10,13,.75),transparent);pointer-events:none}
+.gallery .pic.blurfill{aspect-ratio:4/3}
+.gallery .pic.blurfill>img{object-fit:contain!important}
+
+.ctab{background:linear-gradient(100deg,#FF1493 0%,#D0177F 50%,#7A0E4C 100%);color:#fff}
+.ctab-in{max-width:1180px;margin:0 auto;padding:34px max(24px,env(safe-area-inset-left,0px));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.ctab h2{font-size:clamp(26px,3vw,34px);font-weight:500;color:#fff}
+.ctab h2 em{color:#fff;font-style:italic}
+.ctab p{margin:6px 0 0;color:#FFE3F1;font-size:15px}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#FF1493;border-radius:999px;padding:12px 24px;font-family:var(--font-display);font-weight:700;font-size:14px;letter-spacing:.06em;text-decoration:none;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.ctab .btn-line{border-color:rgba(255,255,255,.85)}
+@media (max-width:700px){.ctab-in{flex-direction:column;align-items:flex-start;padding:28px 20px}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1039,6 +1072,13 @@ function courseView(c){
   new MutationObserver(scan).observe(document.getElementById('view'),{childList:true}); setTimeout(scan,0);
 })();
 
+// put a blurred copy of each photo behind it
+(function(){ const v=document.getElementById('view');
+  const SEL='.c2-img, .co2-ph, .ven2-img, .wall a, .gallery .pic, .tile .ph, .citem .ph, .inpics .pic';
+  const apply=()=>document.querySelectorAll(SEL).forEach(fr=>{ const im=fr.querySelector(':scope > img'); if(!im||fr.classList.contains('blurfill')) return; fr.classList.add('blurfill'); fr.style.setProperty('--bgimg','url("'+im.getAttribute('src')+'")'); });
+  new MutationObserver(apply).observe(v,{childList:true}); setTimeout(apply,0);
+})();
+
 // full footer (Rhythmic Art style), re-rendered with the page language
 function renderFoot(){
   const f=document.getElementById('foot2'); if(!f) return;
@@ -1047,7 +1087,7 @@ function renderFoot(){
   const MORE=[['rg','什么是艺术体操','What is Rhythmic Gymnastics','五种器械，对孩子的好处','Five apparatus and how it helps children','/img/course-competition-full.jpg'],['trial','课程时间','Class Schedule','每周课表与两个场地','Weekly timetable at both venues','/img/venue-chaichee.jpg'],['price','课程费用','Fees','报名费与学费','Sign-up and class fees','/img/classic2026-29.jpg'],['coach','教练团队','Our Coaches','认识我们的专业教练','Meet our coaching team','/img/hk2026-1.jpg'],['highlights','精彩回顾','Highlights','新加坡与国际比赛','Singapore and overseas competitions','/img/classic2026-40.jpg']];
   const cur=location.hash.slice(1)||'home';
   const more=MORE.filter(m=>m[0]!==cur).slice(0,4);
-  const bigCta = (cur==='trial') ? '' : `<section class="cta2 big"><div class="eyebrow">Trial Class</div><h2>${T('预约<em>试课</em>','Book a <em>Trial Class</em>')}</h2><p>${T('凡来试课，送精美纪念品！3 岁起，零基础也可以。','Every trial comes with a special gift! From age 3, no experience needed.')}</p><div class="h2-btns"><a class="btn-pink xl" href="#trial">${T('立即预约试课','Book a trial now')}</a><a class="btn-line xl" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></section>`;
+  const bigCta = (cur==='trial') ? '' : `<section class="ctab"><div class="ctab-in"><div class="ctab-t"><h2>${T('预约<em>试课</em>','Book a <em>Trial Class</em>')}</h2><p>${T('凡来试课，送精美纪念品！3 岁起，零基础也可以。','Every trial comes with a special gift! From age 3, no experience needed.')}</p></div><div class="h2-btns"><a class="btn-white" href="#trial">${T('预约试课','Book a trial')} →</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></div></section>`;
   document.querySelectorAll('#view .cta2').forEach(x=>x.remove());
   f.innerHTML=bigCta+`<div class="f2more"><div class="f2mh">${T('了解更多','Learn more')}</div><div class="f2mg">${more.map(m=>`<a class="f2m" href="#${m[0]}"><img src="${m[5]}" alt="" loading="lazy"><span><b>${T(m[1],m[2])}</b><small>${T(m[3],m[4])}</small></span><em>→</em></a>`).join('')}</div></div><div class="f2in">
     <div class="f2c f2brand">
