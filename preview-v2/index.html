@@ -530,6 +530,8 @@ html[lang^="zh"] h1 em,html[lang^="zh"] h2 em{font-style:normal}
 .h2-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 38%}
 .hero2::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,10,13,.92) 0%,rgba(14,10,13,.75) 38%,rgba(14,10,13,.1) 70%),linear-gradient(0deg,rgba(14,10,13,.7),transparent 40%);z-index:1}
 .h2-in{position:relative;z-index:2;max-width:1180px;width:100%;margin:0 auto;padding:80px max(28px,env(safe-area-inset-left,0px)) 140px;display:flex;flex-direction:column;gap:22px}
+.h2-head{display:flex;flex-direction:column;gap:8px}
+.h2-brand{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.4vw,42px);letter-spacing:.28em;color:#F2C6B4;line-height:1}
 .h2-eb{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.32em;color:#F2C6B4;display:flex;align-items:center;gap:12px}
 .h2-eb::before{content:"";width:34px;height:1px;background:#F2C6B4}
 .h2-t{font-size:clamp(40px,6vw,76px);line-height:1.05;font-weight:500;max-width:12ch;letter-spacing:0}
@@ -551,7 +553,7 @@ html[lang^="zh"] .h2-t{max-width:9.5em}
 .card2{background:var(--surface);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);box-shadow:0 10px 30px rgba(20,16,20,.07);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 .card2:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(224,33,138,.16)}
 .c2-img{aspect-ratio:4/3;overflow:hidden;background:var(--rose-soft)}
-.c2-img img{width:100%;height:100%;object-fit:cover;display:block}
+.c2-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .c2-b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
 .chip2{align-self:flex-start;font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#E0218A;background:var(--rose-soft);padding:4px 10px;border-radius:999px}
 .c2-b h3{font-size:21px;font-weight:600}
@@ -568,15 +570,21 @@ html[lang^="zh"] .h2-t{max-width:9.5em}
 .cta2 .h2-btns{justify-content:center}
 .home2 .banner{border-radius:18px;overflow:hidden}
 .home2 .tiles .tile{border-radius:18px;overflow:hidden}
-@media (max-width:820px){
-  .hero2{margin-top:-20px;min-height:auto}
-  .h2-bg{object-position:65% 30%}
-  .hero2::before{background:linear-gradient(0deg,rgba(14,10,13,.95) 0%,rgba(14,10,13,.75) 45%,rgba(14,10,13,.15) 80%)}
-  .h2-in{padding:300px 20px 120px;gap:16px}
-  .h2-t{font-size:40px}
-  html[lang^="zh"] .h2-t{font-size:34px}
+@media (max-width:1100px){
+  .hero2{display:block;min-height:0;margin-top:-32px}
+  .h2-bg{position:relative;display:block;width:100%;height:auto;aspect-ratio:1110/1000;max-height:78vh;object-fit:cover;object-position:60% 15%}
+  .hero2::before{inset:auto 0 0 0;height:100%;background:linear-gradient(0deg,#0E0A0D 42%,rgba(14,10,13,.6) 52%,transparent 66%)}
+  .h2-in{margin-top:-120px;padding:0 20px 120px;gap:16px}
+  .h2-t{max-width:none}
   .cards2{grid-template-columns:1fr 1fr}
   .venues2{grid-template-columns:1fr}
+}
+@media (max-width:820px){
+  .hero2{margin-top:-20px}
+  .h2-in{margin-top:-14px}
+  .h2-brand{font-size:26px;letter-spacing:.2em}
+  .h2-t{font-size:40px}
+  html[lang^="zh"] .h2-t{font-size:34px}
 }
 @media (max-width:560px){.cards2{grid-template-columns:1fr}.c2-img{aspect-ratio:16/9}.h2-eb{letter-spacing:.18em;font-size:11px}.h2-stats span{font-size:10.5px;letter-spacing:.06em}}
 /* top menu in one row at every width (no side rail, no menu button) */
@@ -920,7 +928,7 @@ const V = {
     <section class="hero2">
       <img class="h2-bg" src="img/hero-v2.jpg" alt="${T('Macia Studio 学员比赛照','Macia Studio gymnast in competition')}">
       <div class="h2-in">
-        <div class="h2-eb">RHYTHMIC GYMNASTICS · SINGAPORE</div>
+        <div class="h2-head"><div class="h2-brand">MACIA STUDIO</div><div class="h2-eb">RHYTHMIC GYMNASTICS · SINGAPORE</div></div>
         <h1 class="h2-t">${T('让孩子在<em>艺术体操</em>中<br>绽放自信','Begin your <em>rhythmic gymnastics</em> journey')}</h1>
         <p>${T('Macia Studio 新加坡艺术体操俱乐部。3–16 岁，零基础到精英，ALJUNIED 与 SGB 两个场地。','Macia Studio, rhythmic gymnastics in Singapore. Ages 3–16, beginner to elite, at two venues: ALJUNIED and SGB.')}</p>
         <div class="h2-btns"><a class="btn-pink" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div>
