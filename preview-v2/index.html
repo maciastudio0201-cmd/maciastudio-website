@@ -891,6 +891,10 @@ html{overflow-x:hidden}
   .navlinks a[data-v=trial]{display:none!important}
   #langBtn{bottom:auto!important;top:calc(env(safe-area-inset-top,0px) + 12px)!important;right:auto!important;left:50%!important;transform:translateX(-50%)}
 }
+.inpics{display:flex;gap:14px;flex-wrap:wrap}
+.inpics .pic{border:0;padding:0;background:none;border-radius:18px;overflow:hidden;width:min(360px,100%);box-shadow:0 0 0 1px rgba(255,110,199,.3),0 16px 40px rgba(255,20,147,.25);cursor:zoom-in}
+.inpics img{width:100%!important;height:auto!important;display:block;object-fit:contain!important;position:static!important;aspect-ratio:auto!important}
+.inpics .pic{aspect-ratio:auto!important;height:auto!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -940,7 +944,7 @@ const byDate = (list) => [...list].sort((a,b)=>(b.s||'').localeCompare(a.s||''))
 const cover = (list) => { const e=byDate(list).find(x=>x.img); return e?`<div class="ph"><img src="${e.img[0]}" alt="${L(e,'n')}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${e.pos||'center'}"></div>`:''; };
 
 const courses = [
-  {id:"little", img:"/img/course-rainbow-tall.jpg", card:"/img/course-rainbow-card.jpg", tall:1, n:"Rainbow 班", nEn:"Rainbow Class", lv:1, r:[1,5,1], x:[["运动启蒙","An early start in sport"],["音乐游戏，启蒙动作","Music, games and first movements"],["小表演、邀请赛","Mini performances and invitationals"]], tt:"little", a:[], t:"专为 3–5 岁小朋友设计的艺术体操启蒙课。在音乐和游戏中练习柔韧、平衡与协调，第一次拿起彩带和小球，轻松快乐地爱上运动。", tEn:"A first rhythmic gymnastics class for children aged 3–5. Through music and games they build flexibility, balance and coordination, try the ribbon and ball for the first time, and learn to love moving."},
+  {id:"little", img:"/img/course-interest-full.jpg", inner:["/img/course-rainbow-v2.jpg"], n:"Rainbow 班", nEn:"Rainbow Class", lv:1, r:[1,5,1], x:[["运动启蒙","An early start in sport"],["音乐游戏，启蒙动作","Music, games and first movements"],["小表演、邀请赛","Mini performances and invitationals"]], tt:"little", a:[], t:"专为 3–5 岁小朋友设计的艺术体操启蒙课。在音乐和游戏中练习柔韧、平衡与协调，第一次拿起彩带和小球，轻松快乐地爱上运动。", tEn:"A first rhythmic gymnastics class for children aged 3–5. Through music and games they build flexibility, balance and coordination, try the ribbon and ball for the first time, and learn to love moving."},
   {id:"interest", img:"/img/course-interest-v2.jpg", n:"兴趣班", nEn:"Interest Class", lv:2, r:[2,4,2], x:[["全面运动，培养兴趣","All-round movement, building interest"],["音乐游戏，初级技术动作","Music, games and beginner skills"],["俱乐部邀请赛（每年 11 月）","Club invitational (every November)"]], tt:"interest", a:[], t:"从柔韧、协调和节奏感开始，让孩子在游戏中爱上艺术体操，建立自信。", tEn:"Children start with flexibility, coordination and rhythm, learning to love rhythmic gymnastics through play and building confidence."},
   {id:"intermediate", img:"/img/course-intermediate-v3.jpg", n:"中级班", nEn:"Intermediate Class", lv:3, r:[3,3,2], x:[["基础训练，加强柔韧和力量","Foundation training for flexibility and strength"],["柔韧训练，绳、圈、球、棒、带技术","Flexibility training; rope, hoop, ball, clubs and ribbon skills"],["俱乐部邀请赛、新加坡狂欢赛","Club invitational, Singapore Carnival"]], tt:"intermediate", a:[], t:"系统学习基本功与器械（绳、圈、球、棒、带），开始编排完整成套动作。", tEn:"Structured training in basic skills and apparatus (rope, hoop, ball, clubs, ribbon), and learning full routines."},
   {id:"competition", img:"/img/course-competition-full.jpg", sched:"/img/schedule-advanced-en.jpg?v=4", n:"高级班", nEn:"Advanced Class", lv:6, r:[6,1,5], x:[["系统训练，升学路线；有训练时长要求和评测；对孩子的心理素质和身体能力有一定要求","Structured training on the school pathway; minimum training hours and assessments; sets certain requirements for mental resilience and physical ability"],["规定等级，尝试挑战较高难度技术","Level routines, trying harder skills"],["新加坡大型赛、邀请赛、国际赛","Major Singapore, invitational and international competitions"]], a:["Level 4–5"], t:"通过考核后进入，加强难度动作与表现力，参加新加坡及国际比赛。", tEn:"Entry after passing an assessment. Harder elements, stronger expression, and competitions in Singapore and overseas."},
@@ -1024,7 +1028,8 @@ function courseView(c){
   const rate = `<section class="sec2 rv">${ratingBox(c)}</section>`;
   const tt = c.tt ? `<section class="sec2 rv"><div class="eyebrow">Timetable</div><h2 class="h2s">${T('上课<em>时间</em>','Class <em>times</em>')}</h2>${ttGrid('course',null,c.tt)}</section>` : (c.sched ? `<section class="sec2 rv"><div class="eyebrow">Timetable</div><h2 class="h2s">${T('训练<em>时间</em>','Training <em>times</em>')}</h2>${schedPic(c.sched, T('训练时间','Training times'))}</section>` : '');
   const cta = `<section class="cta2"><div class="eyebrow">Trial Class</div><h2>${T('预约一堂<em>试课</em>','Book a <em>trial class</em>')}</h2><p>${T('凡来试课，送精美纪念品！','Every trial comes with a special gift!')}</p><div class="h2-btns"><a class="btn-pink" href="#trial">${T('立即预约','Book now')}</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div></section>`;
-  return head + feat + tt + cta;
+  const inner = c.inner ? `<section class="sec2 rv"><div class="eyebrow">In Class</div><h2 class="h2s">${T('课堂<em>瞬间</em>','Moments <em>in class</em>')}</h2><div class="inpics">${c.inner.map(u=>`<button class="pic" data-src="${u}" aria-label="${T('放大照片','Enlarge photo')}"><img src="${u}" alt="${L(c,'n')}" loading="lazy"></button>`).join('')}</div></section>` : '';
+  return head + feat + inner + tt + cta;
 }
 // reveal sections as they scroll into view
 (function(){ if(!('IntersectionObserver' in window)) return;
