@@ -861,7 +861,7 @@ body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2
 
 /* full footer */
 .foot2{background:linear-gradient(180deg,#2A0C20,#0B0709 40%);border-top:1px solid rgba(255,20,147,.35);color:#D9CCD2}
-.f2in{max-width:1180px;margin:0 auto;padding:56px max(24px,env(safe-area-inset-left,0px)) 30px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
+.f2in{max-width:1180px;margin:0 auto;padding:56px max(24px,env(safe-area-inset-left,0px)) 30px;display:grid;grid-template-columns:1.4fr 1fr 1.2fr;gap:48px}
 .f2c{display:flex;flex-direction:column;gap:10px;min-width:0}
 .f2c h4{font-family:"Playfair Display",serif;font-size:22px;font-weight:500;color:#fff;margin:0 0 6px}
 .f2c a{color:#D9CCD2;text-decoration:none;font-size:15px}
@@ -1129,9 +1129,9 @@ function renderFoot(){
       <div class="f2sg"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span>A member of <b>Singapore Gymnastics</b></span></div>
       <img class="f2sglogo" src="/img/sg-gymnastics-logo.png" alt="Singapore Gymnastics">
     </div>
-    <div class="f2c"><h4>${T('课程','Programs')}</h4>${courses.map(c=>`<a href="#course-${c.id}">${L(c,'n')}</a>`).join('')}</div>
+    
     <div class="f2c"><h4>${T('资讯','Information')}</h4>
-      <a href="#trial">${T('课程时间','Schedule')}</a><a href="#price">${T('课程费用','Fees')}</a><a href="#rg">${T('什么是艺术体操','What is Rhythmic Gymnastics')}</a><a href="#coach">${T('教练团队','Coaches')}</a><a href="#highlights">${T('精彩回顾','Highlights')}</a><a href="#acts">${T('丰富活动与训练','Activities & Training')}</a><a href="#shop">${T('商店','Shop')}</a><a href="#trial">${T('预约试课','Book a Trial')}</a></div>
+      <a href="#trial">${T('课程时间','Schedule')}</a><a href="#price">${T('课程费用','Fees')}</a><a href="#coach">${T('教练','Coaches')}</a><a href="#trial">${T('预约试课','Book a Trial')}</a></div>
     <div class="f2c"><h4>${T('联系我们','Contact')}</h4>
       <p><b>Macia Studio</b></p>
       ${VENUES.map(v=>`<p><a href="#venue-${v.id}">${v.tt}</a><br>${v.addr}</p>`).join('')}
