@@ -751,6 +751,23 @@ body{background:#120C10}
 .co2-b{position:relative!important;background:none!important;padding:0 18px 20px!important;margin-top:-34px;text-align:center}
 .card2,.card,.citem,.ven2,.tile,.vcard,.shop-cat,.fcard,.qr,.f2m,.cf{border:0!important;box-shadow:0 18px 44px rgba(0,0,0,.28)!important;background:radial-gradient(130% 120% at 50% 0%,rgba(255,20,147,.10),rgba(30,21,27,.7) 55%,rgba(18,12,16,.25) 100%)!important;border-radius:26px!important}
 .card2 img,.card img,.citem img,.ven2 img,.tile img,.vcard img,.shop-cat img,.wall img,.pic,.f2m img{-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 62%,transparent 100%)}
+@media(max-width:899px){
+#view.splitv{padding-top:64px}
+#view.splitv>.sidepic{display:block}
+#view.splitv>.sidepic img{width:100%;height:62vh;max-height:560px;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+#view.splitv>.phead{background:none!important;margin-top:-70px;position:relative;z-index:2;padding:0 16px 20px!important}
+#view.splitv .cards.three,#view.splitv .coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:900px){
+#view.splitv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:36px;padding:96px max(24px,3vw) 40px;align-items:start}
+#view.splitv>.sidepic{display:block;grid-column:1;grid-row:1/span 60;position:sticky;top:92px}
+#view.splitv>.sidepic img{width:100%;height:calc(100vh - 124px);object-fit:cover;border-radius:26px;display:block;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+#view.splitv>*:not(.sidepic){grid-column:2;min-width:0;max-width:none!important;margin-left:0!important;margin-right:0!important;width:auto!important;padding-left:0!important;padding-right:0!important}
+#view.splitv>.phead{background:none!important;padding:8px 0 22px!important;text-align:left}
+#view.splitv>.phead>a.back{margin-bottom:18px}
+#view.splitv .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+#view.splitv .coaches2{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1147,7 +1164,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2)'); if(!hd||!hd.querySelector(':scope > h1')) return; hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',rg:'/img/rg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(location.hash==='#acts'&&!hd.querySelector('.splitL')){ hd.classList.add('split'); const L=document.createElement('div'); L.className='splitL'; L.innerHTML='<img src="/img/gymfest-8.jpg" alt="Macia Gymfest">'; const R=document.createElement('div'); R.className='splitR'; while(hd.firstChild) R.appendChild(hd.firstChild); const F=document.createElement('div'); F.className='splitF'; F.innerHTML='<img src="/img/gymfest-1.jpg" alt="Macia Gymfest">'; R.appendChild(F); hd.appendChild(L); hd.appendChild(R); } const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2):not(.sidepic)'); if(!hd||!hd.querySelector(':scope > h1')){ v.classList.remove('splitv'); return; } hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/course-elite.jpg',price:'/img/classic2026-29.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/dubai2025-12.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',rg:'/img/rg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(!v.querySelector(':scope > .sidepic')){ const sp=document.createElement('div'); sp.className='sidepic'; sp.innerHTML='<img src="'+im+'" alt="Macia Studio" style="object-position:center '+(im.includes('coach-cover')?'40%':im.includes('gymfest-8')||im.includes('shop-cover')?'20%':'35%')+'">'; v.prepend(sp); } v.classList.add('splitv'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
