@@ -776,6 +776,43 @@ body{background:#120C10}
 .sgm h2{font-family:"Playfair Display",serif;font-style:italic;font-weight:400;font-size:clamp(24px,3vw,34px);color:#fff;margin:0}
 .sgm .sgl{background:#E8E7E8;border-radius:16px;padding:14px 26px;box-shadow:0 0 30px rgba(255,20,147,.18)}
 .sgm .sgl img{display:block;width:min(300px,70vw);height:auto}
+
+/* quick facts under the hero */
+.facts2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:8px}
+.fact{background:var(--surface);border-radius:16px;padding:16px 16px 18px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+.fact i{flex:none;width:38px;height:38px;border-radius:50%;background:rgba(255,20,147,.16);display:grid;place-items:center;color:#FF3DB4;font-style:normal;font-size:18px}
+.fact b{display:block;color:#fff;font-size:15px;line-height:1.35}
+.fact small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.5}
+@media (max-width:900px){.facts2{grid-template-columns:1fr 1fr}}
+/* competition photo wall */
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:220px;gap:12px;width:100%}
+.wall a{border-radius:16px;overflow:hidden;display:block;position:relative}
+.wall a:first-child{grid-row:span 2;grid-column:span 2}
+.wall img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;transition:transform .5s}
+.wall a:hover img{transform:scale(1.05)}
+@media (max-width:700px){.wall{grid-template-columns:1fr 1fr;grid-auto-rows:150px}}
+/* apparatus icons */
+.apps{display:flex;flex-wrap:wrap;gap:18px;margin:6px 0 12px}
+.apps span{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ink)}
+.apps svg{width:54px;height:54px;padding:10px;border-radius:50%;background:rgba(255,20,147,.14);stroke:#FF3DB4;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;box-shadow:0 0 18px rgba(255,20,147,.25)}
+
+/* more Barbie pink flowing down the page */
+body{background:linear-gradient(180deg,#120C10 0%,#1A0B15 35%,#2A0C20 70%,#3A0D2A 100%) fixed}
+.hero2{background:linear-gradient(180deg,#0E0A0D 55%,#3A0D2A 100%)}
+.hero2::after{content:"";position:absolute;left:0;right:0;bottom:0;height:45%;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(255,20,147,.32),transparent)}
+.h2-stats{background:rgba(255,20,147,.16);border-top-color:rgba(255,110,199,.45)}
+.h2-stats div+div{border-left-color:rgba(255,110,199,.3)}
+.fact{background:linear-gradient(135deg,rgba(255,20,147,.22),rgba(255,20,147,.06));box-shadow:0 0 0 1px rgba(255,110,199,.25)}
+.pband{background:linear-gradient(180deg,rgba(14,10,13,.75) 0%,rgba(120,10,70,.62) 60%,rgba(255,20,147,.55) 100%),var(--img) center/cover fixed}
+.home2 .sec2{position:relative}
+.home2 .sec2::before{content:"";position:absolute;inset:-40px -20vw;z-index:-1;background:radial-gradient(50% 60% at 50% 40%,rgba(255,20,147,.14),transparent 70%);pointer-events:none}
+.phead{background:linear-gradient(0deg,rgba(255,20,147,.45) 0%,rgba(18,12,16,.6) 45%,rgba(18,12,16,.35) 100%),var(--pimg,none) center 30%/cover,#0E0A0D!important}
+.cta2{background:linear-gradient(135deg,#FF1493 0%,#C2187A 55%,#7A0E4C 100%)!important}
+.cta2 .eyebrow,.cta2 p{color:#fff!important}
+.cta2 h2 em{color:#fff;text-shadow:0 0 18px rgba(255,255,255,.5)}
+.cta2 .btn-pink{background:#fff;color:#FF1493;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.card2,.co2,.ven2,.cf{border-bottom:3px solid rgba(255,20,147,.6)}
+.sgm{background:linear-gradient(180deg,#3A0D2A,#0B0709)}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1122,7 +1159,7 @@ const V = {
     <div><div class="eyebrow">Rhythmic Gymnastics</div><h1>${T('什么是艺术体操？','What is Rhythmic Gymnastics?')}</h1>
     <p class="lead">${T('艺术体操是奥运会项目，把体操、芭蕾和舞蹈结合在一起，跟着音乐，用器械完成优美又有难度的动作。','Rhythmic gymnastics is an Olympic sport that blends gymnastics, ballet and dance. Gymnasts perform graceful, challenging movements to music with a hand apparatus.')}</p></div>
     <div class="rg-art">
-      <section><h2>${T('五种器械','Five apparatus')}</h2>
+      <section><h2>${T('五种器械','Five apparatus')}</h2><div class="apps">${[['competition','绳','Rope'],['intermediate','圈','Hoop'],['interest','球','Ball'],['elite','棒','Clubs'],['little','带','Ribbon']].map(([k,z,e])=>`<span><svg viewBox="0 0 48 48">${APP[k].svg}</svg>${T(z,e)}</span>`).join('')}</div>
       <p>${T('绳、圈、球、棒、带。每一种器械都有自己的技术：抛接、滚动、旋转、绕环。孩子要一边做身体动作，一边控制器械，还要跟上音乐的节奏。','Rope, hoop, ball, clubs and ribbon. Each has its own skills: throws and catches, rolls, spins and circles. Children learn to move their body, control the apparatus and keep time with the music, all at once.')}</p>
       <p>${T('自 1984 年起，艺术体操就是奥运会正式比赛项目。','Rhythmic gymnastics has been an Olympic sport since 1984.')}</p></section>
       <section><h2>${T('对孩子的好处','How it helps children')}</h2>
@@ -1153,6 +1190,13 @@ const V = {
       <div class="h2-stats"><div><b>20</b><span>${T('年教学经验','Years coaching')}</span></div><div><b>100+</b><span>${T('在训学员','Students')}</span></div><div><b>3–16</b><span>${T('岁','Ages')}</span></div></div>
     </section>
 
+
+    <section class="facts2">
+      <div class="fact"><i>🎁</i><div><b>${T('试课送精美纪念品','A gift with every trial')}</b><small>${T('来上一堂课，亲身体验','Come and try a class')}</small></div></div>
+      <div class="fact"><i>✿</i><div><b>${T('3 岁开始，零基础可学','From age 3, no experience needed')}</b><small>${T('男孩女孩都欢迎','Girls and boys welcome')}</small></div></div>
+      <div class="fact"><i>⌖</i><div><b>${T('两个场地','Two venues')}</b><small>ALJUNIED · SGB</small></div></div>
+      <div class="fact"><i>★</i><div><b>${T('新加坡及国际比赛','Singapore & international competitions')}</b><small>${T('从兴趣到领奖台','From first class to the podium')}</small></div></div>
+    </section>
     <section class="pband" style="--img:url(img/hk2026-1.jpg)">
       <div class="script">About Us</div>
       <h2>${T('关于我们','Who we are')}</h2>
@@ -1189,6 +1233,12 @@ const V = {
       <div class="venues2">${VENUES.map(v=>`<div class="ven2"><h3>${T(v.n,v.nEn)}</h3><p>${v.addr}</p><div class="h2-btns"><a class="btn-pink sm" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line dark sm" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div><a class="more2" href="#venue-${v.id}">${T('课程时间','Timetable')} →</a></div>`).join('')}</div>
     </section>
 
+
+    <section class="sec2">
+      <div class="eyebrow">In Competition</div>
+      <h2 class="h2s">${T('Macia 学员比赛风采','Macia gymnasts in competition')}</h2>
+      <div class="wall">${['classic2025-2','hk2026-1','dubai2025-1','carnival-2','classic2026-40','hk2026-10'].map(f=>`<a href="#highlights"><img src="img/${f}.jpg" alt="${T('Macia 学员比赛照片','Macia gymnasts at a competition')}" loading="lazy"></a>`).join('')}</div>
+    </section>
     <section class="block">
       <div class="tiles two big">
         <a class="tile" href="#highlights">${coverOf(NODES.highlights)}<h3>${T('精彩回顾','Highlights')} <em>&nbsp;→</em></h3><p>${T('新加坡比赛 · 国外赛','Singapore · Overseas competitions')}</p></a>
