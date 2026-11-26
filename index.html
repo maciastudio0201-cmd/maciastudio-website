@@ -657,7 +657,6 @@ const mapUrl = v => 'https://www.google.com/maps/search/?api=1&query=' + encodeU
 const mapLink = v => `<a class="maplink" href="${mapUrl(v)}" target="_blank" rel="noopener">${v.addr}<span>${T('在 Google 地图打开','Open in Google Maps')}&nbsp;↗</span></a>`;
 const coaches = [
   // 教练卡片图片：img（中文版）/ imgEn（英文版）；图片放上来之前先显示文字
-  {n:"Michelle", img:"img/coach-michelle-zh-v3.jpg", imgEn:"img/coach-michelle-en-v3.jpg", t:"创办人<br>新加坡人民协会教练<br>新加坡中小学 CCA 教练", tEn:"Founder<br>People's Association Coach<br>Primary & Secondary School CCA Coach", p:9},
   {n:"Jocelyn", img:"img/coach-jocelyn-zh-v3.jpg", imgEn:"img/coach-jocelyn-en-v3.jpg", t:"行政经理", tEn:"Administrative Manager", p:14},
   {n:"Maven Wong", img:"img/coach-maven-zh-v2.jpg", imgEn:"img/coach-maven-en-v2.jpg", t:"艺术体操总教练 · 马来西亚<br>精英班 · 高级班 · 私教课", tEn:"Head Coach · Malaysia<br>Elite & Advanced Classes<br>Private Coaching", p:10},
   {n:"Fiona", img:"img/coach-fiona-zh-v4.jpg", imgEn:"img/coach-fiona-en-v4.jpg", t:"教练导师 · 艺术体操教练 · 马来西亚<br>所有班 · 私人教练", tEn:"Coaching Mentor · Malaysia<br>Rhythmic Gymnastics Coach<br>All Classes · Private Coach", p:11},
@@ -667,7 +666,8 @@ const coaches = [
   {n:"Alethea", img:"img/coach-alethea-zh.jpg", imgEn:"img/coach-alethea-en-v4.jpg", t:"艺术体操教练<br>中级班 · 兴趣班", tEn:"Rhythmic Gymnastics Coach<br>Intermediate & Interest Classes", p:5},
   {n:"Sophia", img:"img/coach-sophia-zh.jpg", imgEn:"img/coach-sophia-en-v4.jpg", t:"艺术体操教练<br>中级班 · 兴趣班", tEn:"Rhythmic Gymnastics Coach<br>Intermediate & Interest Classes"},
   {n:"Vincent", img:"img/coach-vincent-zh-v2.jpg", imgEn:"img/coach-vincent-en-v2.jpg", t:"体操总教练<br>体能 · 舞蹈技巧 · 私教课", tEn:"Head Gymnastics Coach<br>Strength & Conditioning · Dance Technique<br>Private Coaching", p:12},
-  {n:"He", img:"img/coach-he-zh-v2.jpg", imgEn:"img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13}
+  {n:"He", img:"img/coach-he-zh-v2.jpg", imgEn:"img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13},
+  {n:"Michelle", img:"img/coach-michelle-zh-v3.jpg", imgEn:"img/coach-michelle-en-v3.jpg", t:"创办人<br>新加坡人民协会教练<br>新加坡中小学 CCA 教练", tEn:"Founder<br>People's Association Coach<br>Primary & Secondary School CCA Coach", p:9}
 ];
 const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<a class="chip" href="#course-${c.id}">${L(c,'n')} →</a>`).join('')}</div>`;
 const place = (e) => '';

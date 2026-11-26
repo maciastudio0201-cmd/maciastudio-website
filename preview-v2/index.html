@@ -767,7 +767,7 @@ body{background:#120C10}
 #view.splitv>.phead{background:none!important;padding:8px 0 22px!important;text-align:left}
 #view.splitv>.phead>a.back{margin-bottom:18px}
 #view.splitv .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
-#view.splitv .coaches2{grid-template-columns:repeat(3,minmax(0,1fr))}
+#view.splitv .coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{background:#FF1493;color:#fff;border-color:#FF1493}
 .tt2{grid-template-columns:repeat(7,minmax(118px,1fr))!important;overflow-x:auto;padding-bottom:8px;-webkit-overflow-scrolling:touch}
@@ -805,6 +805,7 @@ a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{backgroun
 #view.splitv>.phead{margin-top:-150px!important;text-shadow:0 2px 16px rgba(0,0,0,.7)}
 .chero .ch-in{margin-top:-150px!important;text-shadow:0 2px 16px rgba(0,0,0,.7)}
 }
+.coaches2 .co2.founder{grid-column:1/-1;justify-self:center;width:calc(50% - 9px)}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1231,7 +1232,6 @@ const mapUrl = v => 'https://www.google.com/maps/search/?api=1&query=' + encodeU
 const mapLink = v => `<a class="maplink" href="${mapUrl(v)}" target="_blank" rel="noopener">${v.addr}<span>${T('在 Google 地图打开','Open in Google Maps')}&nbsp;↗</span></a>`;
 const coaches = [
   // 教练卡片图片：img（中文版）/ imgEn（英文版）；图片放上来之前先显示文字
-  {n:"Michelle", img:"/img/coach-michelle-zh-v3.jpg", imgEn:"/img/coach-michelle-en-v3.jpg", t:"创办人<br>新加坡人民协会教练<br>新加坡中小学 CCA 教练", tEn:"Founder<br>People's Association Coach<br>Primary & Secondary School CCA Coach", p:9},
   {n:"Jocelyn", img:"/img/coach-jocelyn-zh-v3.jpg", imgEn:"/img/coach-jocelyn-en-v3.jpg", t:"行政经理", tEn:"Administrative Manager", p:14},
   {n:"Maven Wong", img:"/img/coach-maven-zh-v2.jpg", imgEn:"/img/coach-maven-en-v2.jpg", t:"艺术体操总教练 · 马来西亚<br>精英班 · 高级班 · 私教课", tEn:"Head Coach · Malaysia<br>Elite & Advanced Classes<br>Private Coaching", p:10},
   {n:"Fiona", img:"/img/coach-fiona-zh-v4.jpg", imgEn:"/img/coach-fiona-en-v4.jpg", t:"教练导师 · 艺术体操教练 · 马来西亚<br>所有班 · 私人教练", tEn:"Coaching Mentor · Malaysia<br>Rhythmic Gymnastics Coach<br>All Classes · Private Coach", p:11},
@@ -1241,7 +1241,8 @@ const coaches = [
   {n:"Alethea", img:"/img/coach-alethea-zh.jpg", imgEn:"/img/coach-alethea-en-v4.jpg", t:"艺术体操教练<br>中级班 · 兴趣班", tEn:"Rhythmic Gymnastics Coach<br>Intermediate & Interest Classes", p:5},
   {n:"Sophia", img:"/img/coach-sophia-zh.jpg", imgEn:"/img/coach-sophia-en-v4.jpg", t:"艺术体操教练<br>中级班 · 兴趣班", tEn:"Rhythmic Gymnastics Coach<br>Intermediate & Interest Classes"},
   {n:"Vincent", img:"/img/coach-vincent-zh-v2.jpg", imgEn:"/img/coach-vincent-en-v2.jpg", t:"体操总教练<br>体能 · 舞蹈技巧 · 私教课", tEn:"Head Gymnastics Coach<br>Strength & Conditioning · Dance Technique<br>Private Coaching", p:12},
-  {n:"He", img:"/img/coach-he-zh-v2.jpg", imgEn:"/img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13}
+  {n:"He", img:"/img/coach-he-zh-v2.jpg", imgEn:"/img/coach-he-en-v2.jpg", t:"体操教练<br>私教课", tEn:"Gymnastics Coach<br>Private Coaching", p:13},
+  {n:"Michelle", img:"/img/coach-michelle-zh-v3.jpg", imgEn:"/img/coach-michelle-en-v3.jpg", t:"创办人<br>新加坡人民协会教练<br>新加坡中小学 CCA 教练", tEn:"Founder<br>People's Association Coach<br>Primary & Secondary School CCA Coach", p:9}
 ];
 const allClasses = (v) => `<div class="chips">${courses.filter(c=>!(v&&v.id==='chaichee'&&c.id==='ballet')).map(c=>`<a class="chip" href="#course-${c.id}">${L(c,'n')} →</a>`).join('')}</div>`;
 const place = (e) => '';
@@ -1523,7 +1524,7 @@ const V = {
   courses: () => `<div><div class="eyebrow">Courses</div><h1>${T('课程介绍','Our Courses')}</h1><p class="lead">${T('从 3 岁启蒙到精英比赛，每个孩子都有适合的班。','From first steps at age 3 to elite competition, there is a class for every child.')}</p></div>${courseCards()}`,
   coach: () => `
     <div><div class="eyebrow">Coaches</div><h1>${T('教练团队','Our Coaches')}</h1><p class="lead">${T('认识我们的专业教练团队。','Meet our professional coaching team.')}</p></div>
-    <div class="coaches2">${coaches.map(c=>`<div class="co2">${c.img?`<div class="co2-ph"><img src="${c.img}" alt="${c.n}" loading="lazy"></div>`:''}<div class="co2-b"><h3>${c.n}</h3><p>${L(c,'t')}</p></div></div>`).join('')}</div>
+    <div class="coaches2">${coaches.map(c=>`<div class="co2${/创办人/.test(c.t)?' founder':''}">${c.img?`<div class="co2-ph"><img src="${c.img}" alt="${c.n}" loading="lazy"></div>`:''}<div class="co2-b"><h3>${c.n}</h3><p>${L(c,'t')}</p></div></div>`).join('')}</div>
     <a class="more-row" href="${WA}" target="_blank" rel="noopener"><span>${T('想了解更多教练详情，请与我们联系','Want to know more about our coaches? Contact us')}<small>${T('点击 WhatsApp 咨询我们的行政','Chat with our admin on WhatsApp')}</small></span><em>&nbsp;→</em></a>`,
   venues: () => `
     <div><div class="eyebrow">Venues</div><h1>${T('训练场馆','Training Venues')}</h1></div>
