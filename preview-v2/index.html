@@ -681,7 +681,7 @@ main{padding-top:32px!important}
 /* other cards */
 .fcard,.qr,.vcard,.shop-cat,.citem,.tform,.trial-intro,.cinfo{border-radius:18px!important}
 .trial-btn{background:#FF1493!important;color:#fff!important;border-radius:999px!important}
-.more-row{border-radius:999px!important;border-color:#FF1493!important}
+.more-row{border-radius:999px!important;border-color:#FF1493!important;padding:18px 36px!important}
 .more-row em{color:#FF1493!important}
 
 .coaches2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
@@ -754,7 +754,7 @@ body{background:#120C10}
 @media(max-width:899px){
 #view.splitv{padding-top:64px}
 #view.splitv>.sidepic{display:block}
-#view.splitv>.sidepic img{width:100%;height:62vh;max-height:560px;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+#view.splitv>.sidepic img{width:100%;height:62vh;max-height:560px;object-fit:cover;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 75%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 10%,#000 90%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 75%,transparent 100%);mask-composite:intersect}
 #view.splitv>.phead{background:none!important;margin-top:-70px;position:relative;z-index:2;padding:0 16px 20px!important}
 #view.splitv .cards.three,#view.splitv .coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -762,7 +762,8 @@ body{background:#120C10}
 #view.splitv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:36px;row-gap:0!important;padding:96px max(24px,3vw) 40px;align-items:start}
 #view.splitv>.sidepic{display:block;grid-column:1;grid-row:1/span 60;position:sticky;top:92px}
 #view.splitv>.sidepic img{width:100%;height:calc(100vh - 124px);object-fit:cover;display:block;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 75%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 75%,transparent 100%);mask-composite:intersect}
-#view.splitv>*:not(.sidepic){margin-bottom:22px;grid-column:2;min-width:0;max-width:none!important;margin-left:0!important;margin-right:0!important;width:auto!important;padding-left:0!important;padding-right:0!important}
+#view.splitv>*:not(.sidepic){margin-bottom:22px;grid-column:2;min-width:0;max-width:none!important;margin-left:0!important;margin-right:0!important;width:auto!important}
+#view.splitv>.phead{padding-left:0!important;padding-right:0!important}
 #view.splitv>.phead{background:none!important;padding:8px 0 22px!important;text-align:left}
 #view.splitv>.phead>a.back{margin-bottom:18px}
 #view.splitv .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -785,6 +786,14 @@ a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{backgroun
 .card .ph.wide{background:var(--wbg) center/cover no-repeat}
 .card .ph.wide::before{content:"";position:absolute;inset:0;backdrop-filter:blur(14px) brightness(.6);-webkit-backdrop-filter:blur(14px) brightness(.6);z-index:0}
 .card .ph.wide img{object-fit:contain!important;z-index:1}
+.tt2wrap.picking .tt2,.tt2wrap.picking .tt2hint{display:none}
+.tt2pick button{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 inherit;font-family:inherit;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,rgba(255,20,147,.18),rgba(30,21,27,.9));color:#F7EEF2;border:1px solid rgba(255,20,147,.35);cursor:pointer;transition:.2s}
+.tt2pick button i{width:10px;height:10px;border-radius:50%}
+.tt2pick button:hover,.tt2pick button.on{background:#FF1493;border-color:#FF1493;color:#fff}
+.tt2ask{color:#E8BE5A;font-size:14px}
+.tt2note{padding:16px 18px;border-radius:18px;background:radial-gradient(120% 120% at 0 0,rgba(255,20,147,.18),rgba(30,21,27,.8));color:#F7EEF2;font-size:15px}
+.tt2note a{color:#E8BE5A;font-weight:700;margin-left:6px}
+.tt2 .tslot[hidden],.tt2 .tnone[hidden],.tt2[hidden],.tt2hint[hidden],.tt2note[hidden],.tt2ask[hidden]{display:none!important}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1163,6 +1172,7 @@ function renderFoot(){
 
 // v2 timetable built from TIMETABLE data (black · pink)
 const TTC={little:'#FF6EC7',interest:'#FF1493',intermediate:'#B9806A',dance:'#E0AE95'};
+window.ttPick=function(b){const w=b.closest('.tt2wrap');const k=b.dataset.k;w.querySelectorAll('.tt2pick button').forEach(x=>x.classList.toggle('on',x===b));w.classList.remove('picking');const note=w.querySelector('.tt2note');const ask=w.querySelector('.tt2ask');if(ask)ask.hidden=true;const grid=w.querySelector('.tt2'),hint=w.querySelector('.tt2hint');if(k==='competition'||k==='elite'){note.hidden=false;grid.hidden=true;hint.hidden=true;return}note.hidden=true;grid.hidden=false;hint.hidden=false;w.querySelectorAll('.tslot').forEach(t=>t.hidden=t.dataset.k!==k);w.querySelectorAll('.tday').forEach(d=>{const any=[...d.querySelectorAll('.tslot')].some(t=>!t.hidden);d.classList.toggle('tempty',!any);const n=d.querySelector('.tnone');if(n)n.hidden=any;})};
 function ttGrid(kind, venue, only){
   const keys = only ? [only] : (kind==='trial' ? ['little','interest','dance'] : ['little','interest','intermediate','dance']);
   const rows=[];
@@ -1171,9 +1181,14 @@ function ttGrid(kind, venue, only){
   const DN={mon:['周一','Mon'],tue:['周二','Tue'],wed:['周三','Wed'],thu:['周四','Thu'],fri:['周五','Fri'],sat:['周六','Sat'],sun:['周日','Sun']};
   const cname=r=> r.k==='dance' ? T(r.a[0],r.a[1]) : L(courses.find(c=>c.id===(r.k==='intermediate'?'intermediate':r.k)),'n');
   const used=[...new Set(rows.map(r=>r.k))];
-  const legend=`<div class="tt2legend">${used.map(k=>`<span><i style="background:${TTC[k]}"></i>${k==='dance'?T('舞蹈 · 芭蕾 · 空翻','Dance · Ballet · Acro'):L(courses.find(c=>c.id===k),'n')}</span>`).join('')}</div>`;
-  const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="tday${rs.length?'':' tempty'}"><div class="tdh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="tslot" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="tcn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="tvt${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="tnone">—</div>`}</div>`}).join('')}</div>`;
-  return `<div class="tt2wrap">${legend}<div class="tt2hint">${T('← 左右滑动查看一周课表 →','← Swipe to see the whole week →')}</div>${grid}</div>`;
+  const pick = !only && kind!=='trial';
+  const extra = pick ? ['competition','elite'].filter(k=>courses.find(c=>c.id===k)) : [];
+  const lname=k=>k==='dance'?T('舞蹈 · 芭蕾 · 空翻','Dance · Ballet · Acro'):L(courses.find(c=>c.id===k),'n');
+  const legend = pick
+    ? `<div class="tt2legend tt2pick">${[...used,...extra].map(k=>`<button type="button" data-k="${k}" onclick="ttPick(this)"><i style="background:${TTC[k]||'#E8BE5A'}"></i>${lname(k)}</button>`).join('')}</div><div class="tt2ask">${T('👆 先点上面的班级，就会出现上课时间','👆 Tap a class above to see its times')}</div><div class="tt2note" hidden>${T('高级班和精英班的训练时间由教练安排，请 WhatsApp 联系我们。','Advanced and Elite training times are arranged by our coaches. Please WhatsApp us.')} <a href="${WA}" target="_blank" rel="noopener">WhatsApp →</a></div>`
+    : `<div class="tt2legend">${used.map(k=>`<span><i style="background:${TTC[k]}"></i>${lname(k)}</span>`).join('')}</div>`;
+  const grid=`<div class="tt2">${DAY_ORDER.map(d=>{const rs=rows.filter(r=>r.d===d).sort((a,b)=>mins(a.t)-mins(b.t));return `<div class="tday${rs.length?'':' tempty'}"><div class="tdh${d==='sat'||d==='sun'?' we':''}">${T(DN[d][0],DN[d][1])}</div>${rs.length?rs.map(r=>`<div class="tslot" data-k="${r.k}" style="--c:${TTC[r.k]}"><b>${r.t}</b><span class="tcn">${cname(r)}</span>${r.k!=='dance'?`<small>${r.a} ${T('岁','yrs')}</small>`:''}<span class="tvt${r.v==='SGB'?' sgb':''}">${r.v}</span></div>`).join(''):`<div class="tnone">—</div>`}</div>`}).join('')}</div>`;
+  return `<div class="tt2wrap${pick?' picking':''}">${legend}<div class="tt2hint">${T('← 左右滑动查看一周课表 →','← Swipe to see the whole week →')}</div>${grid}</div>`;
 }
 function courseCards(){
   const SH={little:['专为 3–5 岁小朋友设计的艺术体操启蒙课，在音乐和游戏中爱上运动。','A first rhythmic gymnastics class for ages 3–5, learning through music and games.'],ballet:['舞蹈基本功、芭蕾舞和舞蹈空翻技巧，小班教学。','Dance basics, ballet and dance acrobatics in small classes.']};
@@ -1395,7 +1410,7 @@ const V = {
         <p>${T('从第一堂课到领奖台，每一步都有专业教练陪伴。<br><b>现在预约试课，送精美纪念品！</b>','From the first class to the podium, expert coaches guide every step.<br><b>Book a trial today and receive a special gift!</b>')}</p>
         <div class="h2-btns"><a class="btn-pink" href="#trial">${T('预约试课','Book a trial')}</a><a class="btn-line" href="${WA}" target="_blank" rel="noopener">WhatsApp</a></div>
       </div>
-      <div class="h2-stats"><div><b>20</b><span>${T('年 · 创办人教学经验','Years · Founder's coaching')}</span></div><div><b>100+</b><span>${T('在训学员','Students')}</span></div><div><b>3–18+</b><span>${T('岁','Ages')}</span></div></div>
+      <div class="h2-stats"><div><b>20</b><span>${T('年 · 创办人教学经验','Years · Founder’s coaching')}</span></div><div><b>100+</b><span>${T('在训学员','Students')}</span></div><div><b>3–18+</b><span>${T('岁','Ages')}</span></div></div>
     </section>
 
 
