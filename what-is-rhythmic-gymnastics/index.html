@@ -863,7 +863,7 @@ a.more-row[href="#trial"]{display:none!important}
 .home2 .sec2 .h2s{font-size:clamp(20px,2.4vw,28px);color:#FF6EC7;font-weight:500}
 .home2 .sec2 .h2s em{color:#FF6EC7;font-style:normal}
 .home2 .cards2,.home2 .venues2{text-align:left;width:100%}
-.avs{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 26px;margin-top:6px}
+.avs{display:flex;flex-wrap:wrap;justify-content:center;gap:22px 26px;margin-top:6px} .avs .avbr{flex-basis:100%;height:0} @media(max-width:899px){.avs .avbr{display:none}}
 .av{display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);width:110px}
 .av span.ph2{width:104px;height:104px;border-radius:50%;overflow:hidden;border:3px solid #FF1493;box-shadow:0 0 22px rgba(255,20,147,.35);background:#F3E9E4;transition:transform .2s}
 .av:hover span.ph2{transform:scale(1.06)}
@@ -1499,7 +1499,7 @@ const V = {
     <section class="sec2">
       <div class="eyebrow">Our Coaches</div>
       <h2 class="h2s">${T('专业教练团队','Our coaching team')}</h2>
-      <div class="avs">${coaches.filter(c=>c.img).map(c=>`<a class="av" href="#coach"><span class="ph2"><img src="${c.img}" alt="${c.n}" loading="lazy"></span><b>${c.n}</b><small>${L(c,'t').split('<br>')[0]}</small></a>`).join('')}</div>
+      <div class="avs">${coaches.filter(c=>c.img).map((c,i,a)=>(i===2||i===a.length-2?'<i class="avbr"></i>':'')+`<a class="av" href="#coach"><span class="ph2"><img src="${c.img}" alt="${c.n}" loading="lazy"></span><b>${c.n}</b><small>${L(c,'t').split('<br>')[0]}</small></a>`).join('')}</div>
     </section>
     <section class="sec2">
       <div class="eyebrow">Venues</div>
