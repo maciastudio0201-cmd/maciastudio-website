@@ -794,6 +794,17 @@ a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{backgroun
 .tt2note{padding:16px 18px;border-radius:18px;background:radial-gradient(120% 120% at 0 0,rgba(255,20,147,.18),rgba(30,21,27,.8));color:#F7EEF2;font-size:15px}
 .tt2note a{color:#E8BE5A;font-weight:700;margin-left:6px}
 .tt2 .tslot[hidden],.tt2 .tnone[hidden],.tt2[hidden],.tt2hint[hidden],.tt2note[hidden],.tt2ask[hidden]{display:none!important}
+@media(min-width:900px){
+#view.splitv>.sidepic img{opacity:.88;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 50%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 72%,transparent 100%)!important;mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 50%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 72%,transparent 100%)!important}
+#view.splitv>.phead{position:relative;z-index:2;margin-left:-24%!important;padding-top:24vh!important;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+.chero .ch-bg,.chero.tall .ch-bg{opacity:.88;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 50%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 72%,transparent 100%)!important;mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 50%,transparent 100%),linear-gradient(180deg,transparent 0,#000 8%,#000 72%,transparent 100%)!important}
+.chero .ch-in{z-index:2;margin-left:-24%!important;padding-top:18vh!important;text-shadow:0 2px 18px rgba(0,0,0,.65)}
+}
+@media(max-width:899px){
+#view.splitv>.sidepic img,.chero .ch-bg,.chero.tall .ch-bg{opacity:.88}
+#view.splitv>.phead{margin-top:-150px!important;text-shadow:0 2px 16px rgba(0,0,0,.7)}
+.chero .ch-in{margin-top:-150px!important;text-shadow:0 2px 16px rgba(0,0,0,.7)}
+}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
