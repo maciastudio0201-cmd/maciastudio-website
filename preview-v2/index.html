@@ -775,6 +775,13 @@ a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{backgroun
 .tt2 .tday.tempty .tdh{opacity:.45}
 .tt2hint{display:block;font-size:12px;color:#E8BE5A}
 @media(max-width:1100px){.tt2hint{display:block}}
+.chero{display:grid!important;grid-template-columns:minmax(0,5fr) minmax(0,7fr)!important;column-gap:40px;align-items:center!important;min-height:0!important;padding:84px max(24px,3vw) 32px!important;background:linear-gradient(90deg,#120C10,#22101b 60%,#3a0f2a)!important;margin-top:-20px}
+.chero::before{display:none!important}
+.chero .ch-bg,.chero.tall .ch-bg{position:relative!important;inset:auto!important;left:auto!important;right:auto!important;top:auto!important;width:100%!important;height:calc(100vh - 140px)!important;max-height:720px;object-fit:cover;object-position:center 25%;border-radius:26px!important;box-shadow:none!important;animation:none!important;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent);grid-column:1;grid-row:1}
+.chero .ch-in{position:relative!important;grid-column:2;grid-row:1;padding:0!important;max-width:none!important;margin:0!important;text-align:left}
+@media(max-width:899px){.chero{grid-template-columns:1fr!important;padding:64px 0 24px!important}
+.chero .ch-bg,.chero.tall .ch-bg{height:62vh!important;max-height:560px;border-radius:0!important}
+.chero .ch-in{grid-column:1;grid-row:2;margin-top:-70px!important;padding:0 18px!important;z-index:2}}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
