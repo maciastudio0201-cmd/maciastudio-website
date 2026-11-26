@@ -759,10 +759,10 @@ body{background:#120C10}
 #view.splitv .cards.three,#view.splitv .coaches2{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(min-width:900px){
-#view.splitv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:36px;padding:96px max(24px,3vw) 40px;align-items:start}
+#view.splitv{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:36px;row-gap:0!important;padding:96px max(24px,3vw) 40px;align-items:start}
 #view.splitv>.sidepic{display:block;grid-column:1;grid-row:1/span 60;position:sticky;top:92px}
 #view.splitv>.sidepic img{width:100%;height:calc(100vh - 124px);object-fit:cover;border-radius:26px;display:block;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
-#view.splitv>*:not(.sidepic){grid-column:2;min-width:0;max-width:none!important;margin-left:0!important;margin-right:0!important;width:auto!important;padding-left:0!important;padding-right:0!important}
+#view.splitv>*:not(.sidepic){margin-bottom:22px;grid-column:2;min-width:0;max-width:none!important;margin-left:0!important;margin-right:0!important;width:auto!important;padding-left:0!important;padding-right:0!important}
 #view.splitv>.phead{background:none!important;padding:8px 0 22px!important;text-align:left}
 #view.splitv>.phead>a.back{margin-bottom:18px}
 #view.splitv .cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -782,6 +782,9 @@ a.chip{text-decoration:none;cursor:pointer;transition:.2s}a.chip:hover{backgroun
 @media(max-width:899px){.chero{grid-template-columns:1fr!important;padding:64px 0 24px!important}
 .chero .ch-bg,.chero.tall .ch-bg{height:62vh!important;max-height:560px;border-radius:0!important}
 .chero .ch-in{grid-column:1;grid-row:2;margin-top:-70px!important;padding:0 18px!important;z-index:2}}
+.card .ph.wide{background:var(--wbg) center/cover no-repeat}
+.card .ph.wide::before{content:"";position:absolute;inset:0;backdrop-filter:blur(14px) brightness(.6);-webkit-backdrop-filter:blur(14px) brightness(.6);z-index:0}
+.card .ph.wide img{object-fit:contain!important;z-index:1}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1118,6 +1121,7 @@ function courseView(c){
   new MutationObserver(scan).observe(document.getElementById('view'),{childList:true}); setTimeout(scan,0);
 })();
 
+document.addEventListener('load',e=>{const im=e.target;if(!im||im.tagName!=='IMG')return;const ph=im.closest('.card .ph');if(!ph)return;if(im.naturalWidth/im.naturalHeight>1.6){ph.classList.add('wide');ph.style.setProperty('--wbg','url('+im.getAttribute('src')+')')}},true);
 // put a blurred copy of each photo behind it
 (function(){ const v=document.getElementById('view');
   const SEL='.c2-img, .co2-ph, .ven2-img, .wall a, .gallery .pic, .tile .ph, .citem .ph, .inpics .pic';
@@ -1145,7 +1149,7 @@ function renderFoot(){
     </div>
     
     <div class="f2c"><h4>${T('资讯','Information')}</h4>
-      <a href="#trial">${T('课程时间','Schedule')}</a><a href="#price">${T('课程费用','Fees')}</a><a href="#coach">${T('教练','Coaches')}</a><a href="#trial">${T('预约试课','Book a Trial')}</a></div>
+      <a href="#trial">${T('课程时间','Schedule')}</a><a href="#price">${T('课程费用','Fees')}</a><a href="#coach">${T('教练','Coaches')}</a><a href="https://form.jotform.com/263287492297068" target="_blank" rel="noopener">${T('家长反馈','Parent Feedback')}</a><a href="#trial">${T('预约试课','Book a Trial')}</a></div>
     <div class="f2c"><h4>${T('联系我们','Contact')}</h4>
       <p><b>Macia Studio</b></p>
       ${VENUES.map(v=>`<p><a href="#venue-${v.id}">${v.tt}</a><br>${v.addr}</p>`).join('')}
@@ -1178,7 +1182,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2):not(.sidepic)'); if(!hd||!hd.querySelector(':scope > h1')){ v.classList.remove('splitv'); return; } hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/course-elite.jpg',price:'/img/fees-cover.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/contact-cover-v2.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',rg:'/img/rg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(!v.querySelector(':scope > .sidepic')){ const sp=document.createElement('div'); sp.className='sidepic'; sp.innerHTML='<img src="'+im+'" alt="Macia Studio" style="object-position:'+(im.includes('contact-cover')?'22% 70%':'center '+(im.includes('coach-cover')?'40%':(im.includes('gymfest-8')||im.includes('shop-cover'))?'20%':'35%'))+'">'; v.prepend(sp); } v.classList.add('splitv'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2):not(.sidepic)'); if(!hd||!hd.querySelector(':scope > h1')){ v.classList.remove('splitv'); return; } hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/course-elite.jpg',price:'/img/fees-cover.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/contact-cover-v2.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',party:'/img/fun-1.jpg',rg:'/img/rg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(!v.querySelector(':scope > .sidepic')){ const sp=document.createElement('div'); sp.className='sidepic'; sp.innerHTML='<img src="'+im+'" alt="Macia Studio" style="object-position:'+(im.includes('contact-cover')?'22% 70%':'center '+(im.includes('coach-cover')?'40%':(im.includes('gymfest-8')||im.includes('shop-cover'))?'20%':'35%'))+'">'; v.prepend(sp); } v.classList.add('splitv'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
@@ -1239,7 +1243,7 @@ const TREE = [
       {id:'camp-kl2026', n:'2026 吉隆坡训练营', nEn:'2026 Kuala Lumpur Training Camp', sub:'学员赴马来西亚吉隆坡集训，<br>与当地俱乐部交流学习，收获满满。', subEn:'Our students trained in Kuala Lumpur, Malaysia, learning alongside a local club.', pos:'center 70%', img:[1,4,2,3,5,6,7,8,9,10,11,12].map(i=>`/img/kl2026-${i}.jpg`)}
     ]},
     {id:'train-daily', n:'日常训练', nEn:'Daily Training', sub:'有汗水，有泪水，有欢乐，有收获。', subEn:'There is sweat, there are tears, there is joy, and there is growth.', kids:[{id:'train-interest', n:'兴趣班与中级班', nEn:'Interest & Intermediate Classes', img:[3,1,2,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32].map(i=>`/img/interest-${i}.jpg`)}, {id:'train-elite', n:'精英训练', nEn:'Elite Training', img:[2,3,4,5,6,7,8,9].map(i=>`/img/elite-train-${i}.jpg`)}]},
-    {id:'party', n:'节日派对', nEn:'Festive Parties', sub:'每年举办节日派对，孩子们一起庆祝、<br>增进友谊。Macia 是温暖的大家庭。', subEn:'Our festive parties bring the children together to celebrate and build friendships. Macia is one warm family.', kids:[
+    {id:'party', n:'近期活动', nEn:'Recent Events', sub:'节日、生日、聚会，孩子们一起庆祝、增进友谊。<br>Macia 是温暖的大家庭。', subEn:'Festivals, birthdays and gatherings bring the children together to celebrate and build friendships. Macia is one warm family.', kids:[
       {id:'party-halloween2026', n:'2026 万圣节派对', nEn:'2026 Halloween Party', sub:'孩子们换上最爱的装扮，拍照、<br>享用美食、领取礼物，欢度万圣节。', subEn:'The children dressed up, took photos, enjoyed party food and collected Halloween gifts.', pos:'center 80%', img:Array.from({length:10},(_,i)=>`/img/halloween2026-${i+1}.jpg`)}
 ,
       {id:'party-fun', n:'聚会 · 活动 · 节日 · 生日', nEn:'Gatherings, Events, Festivals & Birthdays', img:Array.from({length:12},(_,i)=>`/img/fun-${i+1}.jpg`)}
