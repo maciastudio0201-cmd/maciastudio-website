@@ -1497,7 +1497,7 @@ const V = {
     <section class="sec2">
       <div class="eyebrow">Our Coaches</div>
       <h2 class="h2s">${T('专业教练团队','Our coaching team')}</h2>
-      <div class="avs">${coaches.filter(c=>c.img && !/行政/.test(c.t)).map(c=>`<a class="av" href="#coach"><span class="ph2"><img src="${c.img}" alt="${c.n}" loading="lazy"></span><b>${c.n}</b><small>${L(c,'t').split('<br>')[0]}</small></a>`).join('')}</div>
+      <div class="avs">${coaches.filter(c=>c.img).map(c=>`<a class="av" href="#coach"><span class="ph2"><img src="${c.img}" alt="${c.n}" loading="lazy"></span><b>${c.n}</b><small>${L(c,'t').split('<br>')[0]}</small></a>`).join('')}</div>
     </section>
     <section class="sec2">
       <div class="eyebrow">Venues</div>
