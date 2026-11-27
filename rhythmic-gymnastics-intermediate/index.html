@@ -849,17 +849,9 @@ footer.foot2{position:relative;z-index:2;background:#0E0A0D}
 #view.splitv.cfull>.sidepic img[src*="contact-cover-v3"]{width:44vw!important;object-position:center 15%!important}
 #view.splitv.cfull>.phead{margin-left:0!important;margin-top:0!important;padding-top:2vh!important}
 }
-@media(min-width:701px){
-.b-split{display:block!important;position:relative}
-.b-split .b-photo{position:absolute!important;inset:0;width:100%;height:100%}
-.b-split .b-photo .b-blur{display:none}
-.b-split .b-photo .b-main{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--bp,center 30%)!important}
-.b-split.b-fit .b-photo .b-blur{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(22px) brightness(.7) saturate(1.1)!important;transform:scale(1.15)}
-.b-split.b-fit .b-photo .b-main{width:100%;object-fit:cover;object-position:left 35%}
-.b-split .b-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(150,30,110,.2) 0,rgba(130,28,100,.28) 40%,rgba(80,16,64,.78) 56%,rgba(60,12,48,.86) 100%)}
-.b-split .b-copy{position:relative;z-index:2;margin-left:54%;height:100%;pointer-events:none;text-shadow:0 2px 12px rgba(0,0,0,.5)}
-}
-@media(max-width:700px){.b-split .b-photo .b-blur{display:none}.b-split.b-fit .b-photo,.b-split.b-fit .b-photo img{object-fit:contain!important;background:#0E0A0D!important}}
+.b-split .b-photo .b-blur{display:none!important}
+.b-split .b-photo .b-main{object-position:var(--bp,center 25%)}
+.b-split.b-fit .b-photo,.b-split.b-fit .b-photo img{object-fit:contain!important;background:#0E0A0D!important}
 @media(min-width:701px){.shop-cat{grid-template-columns:auto minmax(0,1fr) auto!important;gap:32px!important;padding:20px 28px!important}.shop-ics{gap:10px!important}.shop-ics .shop-img,.shop-ics .shop-art,.shop-ics .shop-ic{width:92px!important;height:92px!important;border-radius:12px;object-fit:cover}.shop-txt b{font-size:24px}.shop-txt small{font-size:15px}}
 .qr{justify-content:flex-start}
 .qr .num{min-height:3.2em;display:flex;align-items:center;justify-content:center;margin:0}
