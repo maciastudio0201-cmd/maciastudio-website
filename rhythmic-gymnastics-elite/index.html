@@ -847,7 +847,17 @@ footer.foot2{position:relative;z-index:2;background:#0E0A0D}
 #view.splitv.cfull>.sidepic img[src*="contact-cover-v3"]{width:44vw!important;object-position:center 15%!important}
 #view.splitv.cfull>.phead{margin-left:0!important;margin-top:0!important;padding-top:2vh!important}
 }
-.b-split.b-fit .b-photo,.b-split.b-fit .b-photo img{object-fit:contain!important;background:#0E0A0D!important}
+@media(min-width:701px){
+.b-split{display:block!important;position:relative}
+.b-split .b-photo{position:absolute!important;inset:0;width:100%;height:100%}
+.b-split .b-photo .b-blur{display:none}
+.b-split .b-photo .b-main{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--bp,center 30%)!important}
+.b-split.b-fit .b-photo .b-blur{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(22px) brightness(.7) saturate(1.1)!important;transform:scale(1.15)}
+.b-split.b-fit .b-photo .b-main{width:58%;object-fit:contain;object-position:center}
+.b-split .b-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(90,15,60,.18) 0,rgba(90,15,60,.28) 38%,rgba(48,10,36,.78) 56%,rgba(26,8,20,.9) 100%)}
+.b-split .b-copy{position:relative;z-index:2;margin-left:54%;height:100%;pointer-events:none;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+}
+@media(max-width:700px){.b-split .b-photo .b-blur{display:none}.b-split.b-fit .b-photo,.b-split.b-fit .b-photo img{object-fit:contain!important;background:#0E0A0D!important}}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1360,10 +1370,10 @@ const BANNERS = [
   {img:'img/tiara2026-podium2.jpg', fit:1,   // 2026 Tiara Cup 小组
    eb:'Tiara Cup 2026', title:'<span>2026 Tiara Cup</span><span>艺术体操比赛</span>', titleEn:'<span>Tiara Cup 2026</span><span>Rhythmic Gymnastics</span><span>Competition</span>',
    text:'小选手们勇敢站上赛场，每个孩子都是最棒的！', textEn:'Our youngest gymnasts stepped bravely onto the floor. Every child is a star!'},
-  {img:'img/classic2026-team1.jpg',    // 2026 经典赛
+  {img:'img/classic2026-team1.jpg', pos:'center 52%',    // 2026 经典赛
    eb:'Singapore Rhythmic Gymnastics Classic 2026', title:'<span>2026 新加坡</span><span>艺术体操经典赛</span>', titleEn:'<span>2026 Singapore</span><span>Rhythmic Gymnastics</span><span>Classic</span>',
    text:'Macia 学员站上领奖台！感谢每一位孩子的努力，和家长一路的支持。', textEn:'Macia gymnasts on the podium! Thank you to every child for their hard work, and to every parent for their support.'},
-  {img:'img/classic2026-team2.jpg',    // 2026 经典赛
+  {img:'img/classic2026-team2.jpg', pos:'center 28%',    // 2026 经典赛
    eb:'Singapore Rhythmic Gymnastics Classic 2026', title:'<span>2026 新加坡</span><span>艺术体操经典赛</span>', titleEn:'<span>2026 Singapore</span><span>Rhythmic Gymnastics</span><span>Classic</span>',
    text:'每一枚奖牌，都是日常训练的坚持。在 Macia，孩子在运动中建立自信。', textEn:'Every medal comes from steady daily training. At Macia, children build confidence through sport.'},
   {img:'img/banner-2.jpg',    // 2026 狂欢赛唯一男选手
@@ -1503,7 +1513,7 @@ const V = {
     <section class="banner" aria-label="${T('最新优惠和消息','Latest offers and news')}">
       <div class="b-track" id="bTrack">${BANNERS.map((b,i)=>b.img
         ? (b.title
-          ? `<div class="b-slide b-split${b.fit?' b-fit':''}"><button class="pic b-photo" data-src="${b.img}" aria-label="${T('放大照片','Enlarge photo')}"><img src="${b.img}" alt=""></button><div class="b-copy"><div class="eyebrow">${b.eb||''}</div><h2>${T(b.title,b.titleEn)}</h2><p>${T(b.text,b.textEn)}</p></div></div>`
+          ? `<div class="b-slide b-split${b.fit?' b-fit':''}"><button class="pic b-photo" data-src="${b.img}" aria-label="${T('放大照片','Enlarge photo')}"><img class="b-blur" src="${b.img}" alt="" aria-hidden="true"><img class="b-main" src="${b.img}" alt=""${b.pos?` style="--bp:${b.pos}"`:''}></button><div class="b-copy"><div class="eyebrow">${b.eb||''}</div><h2>${T(b.title,b.titleEn)}</h2><p>${T(b.text,b.textEn)}</p></div></div>`
           : `<button class="b-slide pic" data-src="${b.img}" aria-label="${T('放大照片','Enlarge photo')} ${i+1}"><img class="b-bg" src="${b.img}" alt="" aria-hidden="true"><img src="${b.img}" alt=""></button>`)
         : `<div class="b-slide b-ph"><span>${T(b.ph,b.phEn)}</span><small>${T('照片待补充','Photo coming soon')}</small></div>`).join('')}</div>
       ${BANNERS.length>1?`<button class="b-nav prev" type="button" aria-label="${T('上一张','Previous')}">‹</button><button class="b-nav next" type="button" aria-label="${T('下一张','Next')}">›</button>
