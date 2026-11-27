@@ -594,7 +594,7 @@ html[lang^="zh"] .h2-t{max-width:9.5em}
 nav.rail{position:sticky!important;top:0;left:auto;bottom:auto;z-index:50;width:auto!important;height:auto!important;transform:none!important;display:flex;flex-direction:row;align-items:center;gap:14px;padding:calc(env(safe-area-inset-top,0px) + 10px) max(20px,env(safe-area-inset-right,0px)) 10px max(20px,env(safe-area-inset-left,0px))!important;background:rgba(14,10,13,.95)!important;backdrop-filter:blur(10px);overflow:visible;border-bottom:1px solid rgba(221,179,90,.25);box-shadow:none}
 nav.rail .brand{flex-direction:row;margin:0;flex:none}
 nav.rail .brand-logo{width:92px}
-nav.rail .brand-name,nav.rail .brand-line,nav.rail .navsep,nav.rail a[data-v=home]{display:none!important}
+nav.rail .brand-name,nav.rail .brand-line,nav.rail .navsep{display:none!important}
 .navlinks{display:flex;align-items:center;gap:0;flex:1;min-width:0;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .navlinks::-webkit-scrollbar{display:none}
 .navlinks a{padding:8px 11px!important;font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#EADDE3!important;white-space:nowrap;flex:none;border-radius:0}
@@ -824,6 +824,14 @@ a.more-row[href="#trial"]{display:none!important}
 .sec2.fbg::before{content:"";position:absolute;inset:-10px -4% -10px;z-index:-1;background:var(--fbg) center 30%/cover no-repeat;opacity:.38;-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 45%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 45%,transparent 100%)}
 .sec2.fbg .cf{background:rgba(30,15,25,.45)!important;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 @media(min-width:900px){.sec2.fbg{min-height:460px;padding-block:50px!important}.sec2.fbg::before{inset:-10px auto -10px 50%;width:min(100%,560px);transform:translateX(-50%);background:var(--fbg) center/contain no-repeat;opacity:.55}}
+@media (min-width:901px){#view.splitv.cfull{position:relative;grid-template-columns:minmax(0,4fr) minmax(0,8fr);padding-top:40px!important}
+#view.splitv.cfull>.sidepic{position:fixed!important;top:0;left:0;width:100vw;height:100vh;z-index:-1;pointer-events:none}
+#view.splitv.cfull>.sidepic img{width:100%;height:100%!important;max-height:none;object-fit:cover;object-position:22% 30%!important;opacity:1!important;-webkit-mask-image:none!important;mask-image:none!important}
+#view.splitv.cfull>.sidepic::after{mix-blend-mode:normal;background:linear-gradient(90deg,rgba(14,10,13,.25) 0,rgba(14,10,13,.55) 32%,rgba(14,10,13,.86) 52%,rgba(14,10,13,.92) 100%),linear-gradient(180deg,rgba(14,10,13,.35),transparent 30%)}
+#view.splitv.cfull>*:not(.sidepic){position:relative;z-index:1}
+footer.foot2{position:relative;z-index:2;background:#0E0A0D}
+#view.splitv.cfull>.phead{margin-left:0!important;margin-top:0!important;padding-top:2vh!important}
+}
 .phead.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:28px;align-items:center;text-align:left;background:linear-gradient(90deg,#120C10 0%,#2a0f20 45%,#5a0f3a 100%)!important;padding:110px max(20px,4vw) 48px!important}
 .phead.split .splitL img{width:100%;aspect-ratio:3/4;max-height:72vh;object-fit:cover;object-position:center 15%;display:block;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 14%,#000 80%,transparent),linear-gradient(0deg,transparent,#000 16%,#000 88%,transparent);mask-composite:intersect}
 .phead.split .splitR{min-width:0;text-align:center}
@@ -1030,19 +1038,16 @@ html{overflow-x:hidden}
     <a class="brand" href="#home"><img class="brand-logo" src="/img/logo-color.png" alt="Macia"><span class="brand-name">Macia Studio</span></a>
     <div class="brand-line"></div><a class="navtrial" href="#trial"><span data-zh="预约试课" data-en="Book a Trial">预约试课</span></a><div class="navlinks">
     <a href="#home" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span data-zh="首页" data-en="Home">首页</span></a>
-    <a href="#coach" data-v="coach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span data-zh="教练" data-en="Coaches">教练</span></a>
-    <a href="#courses" data-v="courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span data-zh="课程" data-en="Courses">课程</span></a>
     <a href="#rg" data-v="rg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 19 L11 9"/><path d="M11 9 C 14 3, 21 6, 17 10 S 11 16, 19 17"/></svg><span data-zh="什么是艺术体操" data-en="What is RG">什么是艺术体操</span></a>
-    <hr class="navsep">
+    <a href="#courses" data-v="courses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v14H4zM8 9h8M8 13h5"/></svg><span data-zh="课程" data-en="Courses">课程</span></a>
     <a href="#price" data-v="price"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1 1.3-1.8 3-1.8s3 .8 3 1.8-1 1.6-3 2-3 1-3 2 1.3 1.8 3 1.8 3-.8 3-1.8"/></svg><span data-zh="课程费用" data-en="Fees">课程费用</span></a>
-    <a href="#trial" data-v="trial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg><span data-zh="试课" data-en="Trial Class">试课</span></a>
-    <a href="#shop" data-v="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span data-zh="商店" data-en="Shop">商店</span></a>
-    <hr class="navsep">
+    <a href="#coach" data-v="coach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg><span data-zh="教练" data-en="Coaches">教练</span></a>
     <a href="#highlights" data-v="highlights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/></svg><span data-zh="精彩回顾" data-en="Highlights">精彩回顾</span></a>
     <a href="#acts" data-v="acts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M18 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><span data-zh="丰富活动与训练" data-en="Activities &amp; Training">丰富活动与训练</span></a>
-    <hr class="navsep">
+    <a href="#shop" data-v="shop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span data-zh="商店" data-en="Shop">商店</span></a>
     <a href="#venues" data-v="venues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span data-zh="场地" data-en="Venues">场地</span></a>
     <a href="#contact" data-v="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 5h16v11H8l-4 4z"/></svg><span data-zh="联系我们" data-en="Contact">联系我们</span></a>
+    <a href="#trial" data-v="trial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 10h16M9 15l2 2 4-4"/></svg><span data-zh="试课" data-en="Trial Class">试课</span></a>
   </div>
   </nav>
 
@@ -1228,7 +1233,7 @@ function courseCards(){
 }
 // move the back link into the page header and mark it as a header band
 (function(){ const v=document.getElementById('view');
-  const fix=()=>{ const hd=v.querySelector(':scope > div:not(.home2):not(.sidepic)'); if(!hd||!hd.querySelector(':scope > h1')){ v.classList.remove('splitv'); return; } hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/contact-cover-v2.jpg',price:'/img/fees-cover.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/contact-cover-v2.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',party:'/img/fun-1.jpg',rg:'/img/rg-cover.jpg',sg:'/img/sg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(!v.querySelector(':scope > .sidepic')){ const sp=document.createElement('div'); sp.className='sidepic'; sp.innerHTML='<img src="'+im+'" alt="Macia Studio" style="object-position:'+(im.includes('contact-cover')?'22% 70%':'center '+(im.includes('coach-cover')?'40%':(im.includes('gymfest-8')||im.includes('shop-cover'))?'20%':'35%'))+'">'; v.prepend(sp); } v.classList.add('splitv'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
+  const fix=()=>{ v.classList.toggle('cfull',['#courses','#rg'].includes(location.hash)); const hd=v.querySelector(':scope > div:not(.home2):not(.sidepic)'); if(!hd||!hd.querySelector(':scope > h1')){ v.classList.remove('splitv'); return; } hd.classList.add('phead'); const eb=hd.querySelector('.eyebrow'); if(eb){ const parts=eb.textContent.split(' · '); if(parts.length>2||eb.textContent.length>26) eb.textContent=parts[parts.length-1]; } const PI={coach:'/img/coach-cover.jpg',courses:'/img/contact-cover-v2.jpg',price:'/img/fees-cover.jpg',trial:'/img/gymfest-3.jpg',venues:'/img/venue-chaichee-v2.jpg','venue-geylang':'/img/venue-geylang.jpg','venue-chaichee':'/img/venue-chaichee-v2.jpg',contact:'/img/contact-cover-v2.jpg',shop:'/img/shop-cover.jpg',highlights:'/img/classic2026-40.jpg',acts:'/img/gymfest-8.jpg',party:'/img/fun-1.jpg',rg:'/img/rg-cover.jpg',sg:'/img/sg-cover.jpg'}; const key=location.hash.slice(1).split('-')[0]; const im=PI[location.hash.slice(1)]||PI[key]||'/img/classic2026-29.jpg'; hd.style.setProperty('--pimg','url('+im+')'); hd.style.setProperty('--ppos',im.includes('gymfest-8')?'15%':im.includes('coach-cover')?'58%':im.includes('shop-cover')?'25%':'30%'); if(!v.querySelector(':scope > .sidepic')){ const sp=document.createElement('div'); sp.className='sidepic'; sp.innerHTML='<img src="'+im+'" alt="Macia Studio" style="object-position:'+(im.includes('contact-cover')?'22% 70%':'center '+(im.includes('coach-cover')?'40%':(im.includes('gymfest-8')||im.includes('shop-cover'))?'20%':'35%'))+'">'; v.prepend(sp); } v.classList.add('splitv'); const bk=v.querySelector(':scope > a.back'); if(bk) hd.prepend(bk); };
   new MutationObserver(fix).observe(v,{childList:true}); setTimeout(fix,0);
 })();
 const VENUES = [
