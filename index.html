@@ -1036,6 +1036,10 @@ html{overflow-x:hidden}
 .f2more{display:none!important}
 .ttwrap{display:grid;gap:18px;align-items:start}.ttimg{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),linear-gradient(180deg,transparent 0,#000 14%,#000 80%,transparent 100%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0,#000 18%,#000 82%,transparent 100%),linear-gradient(180deg,transparent 0,#000 14%,#000 80%,transparent 100%)!important;mask-composite:intersect!important;opacity:.9;width:100%;border-radius:20px;object-fit:cover;aspect-ratio:3/4;max-height:520px;object-position:center 20%}.ttside{min-width:0}
 @media(min-width:900px){.ttwrap{grid-template-columns:240px minmax(0,1fr)}.ttimg{position:sticky;top:90px}}
+.chero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(150,30,110,.32) 0,rgba(140,28,105,.34) 40%,rgba(90,18,70,.42) 62%,rgba(70,14,56,.48) 100%)}
+.chero .ch-bg,.chero.tall .ch-bg{filter:brightness(.9) saturate(.9)}
+#view.splitv.cfull>.sidepic img{filter:brightness(.92) saturate(.9)}
+#view .ph img{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 80%,transparent 100%)!important;-webkit-mask-composite:source-in!important;mask-image:linear-gradient(90deg,transparent 0,#000 16%,#000 84%,transparent 100%),linear-gradient(180deg,transparent 0,#000 16%,#000 80%,transparent 100%)!important;mask-composite:intersect!important;filter:brightness(.92) saturate(.9)}
 .wafab{display:none}
 @media(max-width:899px){.wafab{display:flex;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;width:58px;height:58px;border-radius:50%;background:#FF1493;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(255,20,147,.5),0 0 0 3px rgba(255,255,255,.15)}.wafab svg{width:32px;height:32px;fill:#fff}}
 .co2{position:relative}
